@@ -12,7 +12,7 @@
             --orange-bright: #f38b34;
             --text-main: #ffffff;
             --text-muted: #8b8b8b;
-            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.04);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -51,7 +51,7 @@
             padding: 0 40px;
         }
 
-        /* Nav Header */
+        /* Nav Header - Kept normal and fixed at top */
         .header {
             display: flex;
             justify-content: space-between;
@@ -60,10 +60,10 @@
             position: absolute;
             top: 0;
             width: 100%;
-            z-index: 10;
+            z-index: 100;
         }
 
-        .brand-logo {
+        .brand-logo-nav {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -86,9 +86,14 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(226, 125, 44, 0.4);
+            transition: 0.3s ease;
+        }
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(226, 125, 44, 0.6);
         }
 
-        /* ================= HERO SECTION (Screenshot 1) ================= */
+        /* ================= HERO SECTION ================= */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -99,8 +104,8 @@
 
         .hero-layout {
             display: grid;
-            grid-template-columns: 1fr 400px 300px;
-            gap: 20px;
+            grid-template-columns: 1fr 500px;
+            gap: 40px;
             align-items: center;
             width: 100%;
         }
@@ -131,77 +136,119 @@
             color: transparent;
             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
         }
+        
+        .hero-title .solid-orange {
+            color: var(--orange-glow);
+        }
 
         .hero-desc {
             margin-top: 40px;
-            max-width: 350px;
-            font-size: 14px;
+            max-width: 380px;
+            font-size: 15px;
             color: var(--text-muted);
             line-height: 1.8;
             display: flex;
             gap: 15px;
         }
 
-        .hero-center-img {
-            width: 100%;
-            height: 600px;
-            background: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop') center/cover;
-            border-radius: 200px;
+        /* ================= FLOATING CARDS AREA ================= */
+        .hero-visual {
             position: relative;
-            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            height: 550px;
+            width: 100%;
         }
 
-        /* Glass Cards on Right */
-        .glass-panel {
+        .float-card {
+            position: absolute;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            animation: float 6s ease-in-out infinite;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .float-card:hover {
+            border-color: rgba(226, 125, 44, 0.4);
+            transform: scale(1.02) !important;
+            box-shadow: 0 15px 50px rgba(226, 125, 44, 0.15);
+        }
+
+        /* Card 1: Logo Card */
+        .fc-logo {
+            top: 5%;
+            right: 5%;
+            width: 280px;
+            animation-delay: 0s;
+        }
+
+        /* Card 2: Registration Card */
+        .fc-reg {
+            top: 40%;
+            left: 0;
+            width: 320px;
+            animation-delay: -2s;
+            border-color: rgba(226, 125, 44, 0.2);
+        }
+
+        /* Card 3: Entry Portal Card */
+        .fc-entry {
+            bottom: 0;
+            right: 15%;
+            width: 260px;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Card Internals */
+        .fc-icon-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
 
-        .glass-panel h4 { font-size: 14px; font-weight: 600; margin-bottom: 20px; }
-        .glass-panel p.sub { font-size: 11px; color: var(--text-muted); margin-bottom: 20px; }
-
-        .stat-chart-placeholder {
-            height: 80px;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.3);
-            position: relative;
+        .fc-icon {
+            width: 44px; height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
         }
-        .stat-line {
+
+        .fc-logo-img {
+            width: 60px; height: 60px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--orange-glow), #000);
+            padding: 2px;
+            margin-bottom: 16px;
+        }
+        .fc-logo-img img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
+
+        .wave-graph {
+            margin-top: 20px; 
+            height: 40px; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            position:relative;
+        }
+        .wave-graph::before {
+            content: '';
             position: absolute;
             bottom: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, rgba(226, 125, 44, 0.2), transparent);
         }
 
-        /* Circle Stat */
-        .circle-stat-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            height: 120px;
-        }
-        .circle-main {
-            width: 100px; height: 100px;
-            border-radius: 50%;
-            background: var(--orange-glow);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px; font-weight: 700;
-        }
-        .circle-small {
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.3);
-            position: absolute;
-            left: 20px; bottom: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 12px; backdrop-filter: blur(10px);
-        }
-
-        /* ================= SMARTER NOT HARDER SECTION (Screenshot 2) ================= */
+        /* ================= SMARTER NOT HARDER SECTION ================= */
         .smarter-section {
             padding: 120px 0;
             text-align: center;
@@ -255,7 +302,7 @@
         .feat-item h4 { font-size: 18px; margin-bottom: 8px; font-weight: 600; }
         .feat-item p { font-size: 14px; color: var(--text-muted); }
 
-        /* ================= WORKFLOW GRID SECTION (Screenshot 3) ================= */
+        /* ================= WORKFLOW GRID SECTION ================= */
         .workflow-section {
             padding: 120px 0;
         }
@@ -307,7 +354,6 @@
             justify-content: center;
         }
         
-        /* Simulating the glowing box from screenshot */
         .workflow-img-box::after {
             content: '';
             position: absolute;
@@ -321,7 +367,7 @@
         .workflow-card h3 { font-size: 20px; margin-bottom: 12px; }
         .workflow-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
-        /* ================= BIG TEXT CTA SECTION (Screenshot 4) ================= */
+        /* ================= BIG TEXT CTA SECTION ================= */
         .cta-section {
             padding: 150px 0;
             position: relative;
@@ -383,9 +429,9 @@
 
     <div class="ambient-glow"></div>
 
-    <!-- HEADER -->
+    <!-- HEADER (Normal Fixed Nav) -->
     <header class="header">
-        <div class="brand-logo">
+        <div class="brand-logo-nav">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             SMART ENTRY
         </div>
@@ -397,7 +443,7 @@
         <a href="https://forms.gle/M7V8r844wNx37jgq5" class="btn-glow" style="text-decoration: none;">Register</a>
     </header>
 
-    <!-- 1. HERO SECTION (Matches Screenshot 1 layout) -->
+    <!-- 1. HERO SECTION -->
     <section class="hero" id="home">
         <div class="container hero-layout">
             <!-- Left Text -->
@@ -407,9 +453,9 @@
                     HOSTEL DIGITAL PLATFORM
                 </div>
                 <h1 class="hero-title">
-                    <span class="hollow">DIGITAL</span><br>
-                    SYSTEMS BY<br>
-                    <span class="hollow">SMART ENTRY</span>
+                    SMART<br>
+                    <span class="solid-orange">ENTRY</span><br>
+                    <span class="hollow">PORTAL</span>
                 </h1>
                 <div class="hero-desc">
                     <div style="width: 20px; display: grid; gap: 4px; margin-top: 5px;">
@@ -421,40 +467,48 @@
                 </div>
             </div>
 
-            <!-- Center Image (Replacing VR Lady) -->
-            <div class="hero-center-img"></div>
+            <!-- Right Floating Cards Area -->
+            <div class="hero-visual">
+                
+                <!-- Card 1: Logo & Smart Entry -->
+                <a href="#home" class="float-card fc-logo">
+                    <div class="fc-logo-img">
+                        <img src="logo.png" alt="Logo">
+                    </div>
+                    <h3 style="font-size: 24px; font-weight: 700; color: #fff;">Smart Entry</h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">Official Student Platform</p>
+                </a>
 
-            <!-- Right Glass Cards -->
-            <div>
-                <div class="glass-panel">
-                    <h4 style="display: flex; justify-content: space-between;">Active Gate Check <span>↗</span></h4>
-                    <p class="sub">More secure with digital QR code generation.</p>
-                    <div class="stat-chart-placeholder">
-                        <div class="stat-line"></div>
-                        <svg width="100%" height="100%" style="position:absolute; bottom:0;"><path d="M0,60 Q50,20 100,50 T250,10" fill="none" stroke="#e27d2c" stroke-width="2"/></svg>
-                        <span style="position: absolute; right: 0; bottom: 20px; font-size: 10px; background: rgba(0,0,0,0.5); padding: 2px 5px; border-radius: 4px;">94%</span>
+                <!-- Card 2: Registration Portal -->
+                <a href="https://forms.gle/M7V8r844wNx37jgq5" target="_blank" class="float-card fc-reg">
+                    <div class="fc-icon-wrap">
+                        <div class="fc-icon">📝</div>
+                        <span style="font-size: 20px; color: var(--text-muted);">↗</span>
                     </div>
-                </div>
+                    <h3 style="font-size: 32px; font-weight: 700; color: #fff; line-height: 1.1;">Registration<br>Portal</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">Digital Student Onboarding</p>
+                    
+                    <!-- Wave Graph -->
+                    <div class="wave-graph">
+                        <svg width="100%" height="100%" preserveAspectRatio="none"><path d="M0,30 Q50,10 100,20 T200,10" fill="none" stroke="#e27d2c" stroke-width="2"/></svg>
+                    </div>
+                </a>
 
-                <div class="glass-panel">
-                    <h4 style="display: flex; justify-content: space-between;">Approved Passes <span>↗</span></h4>
-                    <a href="Entry Form.html" style="font-size: 11px; color: var(--text-muted);">Open Portal ></a>
-                    <div class="circle-stat-container">
-                        <div class="circle-main">93%</div>
-                        <div class="circle-small">9%</div>
-                        <div class="circle-small" style="left: auto; right: 10px; top: 10px; width: 40px; height: 40px;">21%</div>
+                <!-- Card 3: Entry Portal -->
+                <a href="Entry Form.html" class="float-card fc-entry">
+                    <div class="fc-icon-wrap" style="margin-bottom: 10px;">
+                        <span style="font-size: 12px; color: var(--text-muted);">Live Status</span>
+                        <span style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981;"></span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin-top: 10px; text-align: center; color: var(--text-muted); font-size: 10px;">
-                        <div><strong style="color:#fff; font-size:14px;">94%</strong><br>Security</div>
-                        <div><strong style="color:#fff; font-size:14px;">140</strong><br>Outpasses</div>
-                        <div><strong style="color:#fff; font-size:14px;">140</strong><br>Home Pass</div>
-                    </div>
-                </div>
+                    <h3 style="font-size: 32px; font-weight: 700; color: #fff; line-height: 1.1;">Entry<br>Portal</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">Outpass & Gate Check</p>
+                </a>
+
             </div>
         </div>
     </section>
 
-    <!-- 2. SMARTER NOT HARDER (Matches Screenshot 2 layout) -->
+    <!-- 2. SMARTER NOT HARDER -->
     <section class="smarter-section" id="smarter">
         <div class="container">
             <h2 class="smarter-title">HOSTELS THAT WANT<br>TO <span>WORK SMARTER,</span><br>NOT HARDER.</h2>
@@ -484,7 +538,7 @@
         </div>
     </section>
 
-    <!-- 3. WORKFLOW GRID (Matches Screenshot 3 layout) -->
+    <!-- 3. WORKFLOW GRID -->
     <section class="workflow-section" id="workflows">
         <div class="container">
             <div class="workflow-header">
@@ -518,7 +572,7 @@
         </div>
     </section>
 
-    <!-- 4. CTA BIG TEXT (Matches Screenshot 4 layout) -->
+    <!-- 4. CTA BIG TEXT -->
     <section class="cta-section">
         <div class="huge-bg-text">AGENTSELF</div>
         
