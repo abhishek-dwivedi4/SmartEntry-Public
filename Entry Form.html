@@ -98,50 +98,49 @@
       z-index: 5;
     }
 
-    /* Typing text color set to pure white with !important */
-    .form-control, .form-select { 
+    /* Force White Text for Inputs */
+    input.form-control, select.form-select, .form-control, .form-select { 
       border-radius: 6px; 
       min-height: 48px; 
-      border: 1px solid var(--input-border); 
+      border: 1px solid var(--input-border) !important; 
       box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important; 
       background-color: var(--input-bg) !important; 
-      color: #ffffff !important; 
+      color: #ffffff !important; /* STRICTLY WHITE TEXT */
       transition: .25s ease; 
       font-size: 14px; 
       padding: 10px 15px;
-      color-scheme: dark; /* Keeps date picker text & icon white */
+      color-scheme: dark;
     }
 
     .form-control::placeholder { 
       color: #8c9fb8 !important; 
     }
 
-    /* Focus state me bhi text pure white rahe */
-    .form-control:focus, .form-select:focus { 
+    /* Force White Text on Focus */
+    input.form-control:focus, select.form-select:focus, .form-control:focus, .form-select:focus { 
       border-color: var(--primary) !important; 
       box-shadow: 0 0 0 2px rgba(251, 192, 45, 0.3) !important; 
       background-color: #1e3f6b !important;
-      color: #ffffff !important;
+      color: #ffffff !important; /* STRICTLY WHITE TEXT ON FOCUS */
     }
 
-    /* Dropdown options color */
     .form-select option {
-      background-color: #1a365d;
+      background-color: var(--input-bg);
       color: #ffffff;
     }
 
-    /* Chrome / Safari autofill hone par text black na ho */
+    /* Browser Autofill Text Color Fix */
     input:-webkit-autofill,
     input:-webkit-autofill:hover, 
     input:-webkit-autofill:focus, 
     input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 30px #1a365d inset !important;
+      -webkit-box-shadow: 0 0 0 30px var(--input-bg) inset !important;
       -webkit-text-fill-color: #ffffff !important;
     }
     
     .readonly{ 
       background-color: #132a4a !important; 
-      color: #e2e8f0 !important; 
+      color: #cbd5e1 !important; 
       cursor: not-allowed; 
     }
     
