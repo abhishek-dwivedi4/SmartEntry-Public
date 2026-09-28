@@ -30,8 +30,9 @@
     .topbar, .main-wrap, .footer{ position:relative; z-index:1; }
     .topbar{ display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; padding:16px 26px; background:rgba(26, 54, 93, 0.9); backdrop-filter:blur(12px); border-bottom:1px solid var(--input-border); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     
-    .brand-left{ display:flex; align-items:center; gap:12px; min-width:0; cursor: pointer; transition: opacity 0.2s; }
-    .brand-left:hover { opacity: 0.8; }
+    .brand-left{ display:flex; align-items:center; gap:12px; min-width:0; }
+    .brand-left a { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s ease; }
+    .brand-left a:hover { transform: scale(1.05); }
     .brand-left img{ width:48px; height:48px; object-fit:contain; border-radius:14px; background:#fff; padding:6px; flex-shrink:0; }
     .brand-left span{ font-size:16px; font-weight:900; color:#fff; letter-spacing:.4px; white-space:nowrap; }
     
@@ -168,11 +169,13 @@
 <body>
 
   <div class="topbar">
-    <!-- Ye hissa ab clickable hai aur index.html par redirect karega -->
-    <a href="index.html" class="brand-left" style="text-decoration: none;">
-      <img src="logo.png" alt="Smart Entry Logo">
+    <div class="brand-left">
+      <!-- Sirf Logo ko clickable bana diya hai index.html ke liye -->
+      <a href="index.html">
+        <img src="logo.png" alt="Smart Entry Logo">
+      </a>
       <span>SMART ENTRY PORTAL</span>
-    </a>
+    </div>
 
     <div class="top-actions">
       <a href="https://forms.gle/M7V8r844wNx37jgq5" target="_blank" class="reg-btn">STUDENT REGISTRATION</a>
