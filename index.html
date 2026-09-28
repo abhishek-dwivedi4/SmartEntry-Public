@@ -12,8 +12,8 @@
             --orange-bright: #f38b34;
             --text-main: #ffffff;
             --text-muted: #8b8b8b;
-            --glass-bg: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(22, 20, 18, 0.7); /* Thoda dark solid glass look */
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -51,7 +51,7 @@
             padding: 0 40px;
         }
 
-        /* Nav Header - Kept normal and fixed at top */
+        /* Nav Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -63,7 +63,7 @@
             z-index: 100;
         }
 
-        .brand-logo-nav {
+        .brand-logo {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -136,7 +136,7 @@
             color: transparent;
             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
         }
-        
+
         .hero-title .solid-orange {
             color: var(--orange-glow);
         }
@@ -151,7 +151,7 @@
             gap: 15px;
         }
 
-        /* ================= FLOATING CARDS AREA ================= */
+        /* ================= FLOATING CARDS AREA (Matches Screenshot) ================= */
         .hero-visual {
             position: relative;
             height: 550px;
@@ -161,52 +161,56 @@
         .float-card {
             position: absolute;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border-radius: 30px;
+            padding: 32px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             animation: float 6s ease-in-out infinite;
             transition: 0.4s ease;
             display: flex;
             flex-direction: column;
+            text-decoration: none;
         }
 
         .float-card:hover {
             border-color: rgba(226, 125, 44, 0.4);
-            transform: scale(1.02) !important;
-            box-shadow: 0 15px 50px rgba(226, 125, 44, 0.15);
+            box-shadow: 0 20px 50px rgba(226, 125, 44, 0.2);
         }
 
-        /* Card 1: Logo Card */
+        /* Card 1: Logo & Smart Entry (Top Right) */
         .fc-logo {
-            top: 5%;
-            right: 5%;
-            width: 280px;
+            top: 20px;
+            right: 0px;
+            width: 290px;
+            z-index: 2;
             animation-delay: 0s;
         }
 
-        /* Card 2: Registration Card */
+        /* Card 2: Registration Portal (Middle Left) */
         .fc-reg {
-            top: 40%;
-            left: 0;
-            width: 320px;
+            top: 160px;
+            left: 10px;
+            width: 340px;
+            z-index: 1;
             animation-delay: -2s;
-            border-color: rgba(226, 125, 44, 0.2);
+            overflow: hidden;
+            padding-bottom: 70px; /* Space for wave graph */
         }
 
-        /* Card 3: Entry Portal Card */
+        /* Card 3: Entry Portal (Bottom Right overlapping Card 2) */
         .fc-entry {
-            bottom: 0;
-            right: 15%;
-            width: 260px;
+            bottom: 40px;
+            right: 40px;
+            width: 300px;
+            z-index: 3;
             animation-delay: -4s;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-12px); }
         }
 
         /* Card Internals */
@@ -214,7 +218,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .fc-icon {
@@ -227,25 +231,42 @@
         }
 
         .fc-logo-img {
-            width: 60px; height: 60px;
-            border-radius: 14px;
+            width: 64px; height: 64px;
+            border-radius: 18px;
             background: linear-gradient(135deg, var(--orange-glow), #000);
             padding: 2px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
-        .fc-logo-img img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
+        .fc-logo-img img { width: 100%; height: 100%; border-radius: 16px; object-fit: cover; }
 
-        .wave-graph {
-            margin-top: 20px; 
-            height: 40px; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
-            position:relative;
+        .fc-title {
+            font-size: 32px; 
+            font-weight: 700; 
+            color: #fff; 
+            line-height: 1.1; 
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
-        .wave-graph::before {
+
+        .fc-sub {
+            font-size: 14px; 
+            color: var(--text-muted);
+        }
+
+        /* Wave Graph Absolute positioning */
+        .wave-graph-abs {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            border-top: 1px solid transparent;
+        }
+        .wave-graph-abs::before {
             content: '';
             position: absolute;
             bottom: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(226, 125, 44, 0.2), transparent);
+            background: linear-gradient(to top, rgba(226, 125, 44, 0.15), transparent);
         }
 
         /* ================= SMARTER NOT HARDER SECTION ================= */
@@ -429,9 +450,9 @@
 
     <div class="ambient-glow"></div>
 
-    <!-- HEADER (Normal Fixed Nav) -->
+    <!-- HEADER -->
     <header class="header">
-        <div class="brand-logo-nav">
+        <div class="brand-logo">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             SMART ENTRY
         </div>
@@ -440,7 +461,7 @@
             <a href="#smarter">Governance</a>
             <a href="#workflows">Workflows</a>
         </nav>
-        <a href="https://forms.gle/M7V8r844wNx37jgq5" class="btn-glow" style="text-decoration: none;">Register</a>
+        <a href="https://forms.gle/M7V8r844wNx37jgq5" class="btn-glow" style="text-decoration: none;" target="_blank">Register</a>
     </header>
 
     <!-- 1. HERO SECTION -->
@@ -467,41 +488,41 @@
                 </div>
             </div>
 
-            <!-- Right Floating Cards Area -->
+            <!-- Right Floating Cards Area (Matches image_01b478.png) -->
             <div class="hero-visual">
                 
-                <!-- Card 1: Logo & Smart Entry -->
+                <!-- Card 1: Logo & Smart Entry (Top Right) -->
                 <a href="#home" class="float-card fc-logo">
                     <div class="fc-logo-img">
                         <img src="logo.png" alt="Logo">
                     </div>
-                    <h3 style="font-size: 24px; font-weight: 700; color: #fff;">Smart Entry</h3>
-                    <p style="font-size: 13px; color: var(--text-muted);">Official Student Platform</p>
+                    <h3 style="font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px;">Smart Entry</h3>
+                    <p class="fc-sub">Official Student Platform</p>
                 </a>
 
-                <!-- Card 2: Registration Portal -->
+                <!-- Card 2: Registration Portal (Middle Left) -->
                 <a href="https://forms.gle/M7V8r844wNx37jgq5" target="_blank" class="float-card fc-reg">
                     <div class="fc-icon-wrap">
                         <div class="fc-icon">📝</div>
-                        <span style="font-size: 20px; color: var(--text-muted);">↗</span>
+                        <span style="font-size: 16px; color: var(--text-muted);">↗</span>
                     </div>
-                    <h3 style="font-size: 32px; font-weight: 700; color: #fff; line-height: 1.1;">Registration<br>Portal</h3>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">Digital Student Onboarding</p>
+                    <h3 class="fc-title">Registration<br>Portal</h3>
+                    <p class="fc-sub">Digital Student Onboard...</p>
                     
-                    <!-- Wave Graph -->
-                    <div class="wave-graph">
-                        <svg width="100%" height="100%" preserveAspectRatio="none"><path d="M0,30 Q50,10 100,20 T200,10" fill="none" stroke="#e27d2c" stroke-width="2"/></svg>
+                    <!-- Wave Graph Absolute Bottom -->
+                    <div class="wave-graph-abs">
+                        <svg width="100%" height="100%" preserveAspectRatio="none"><path d="M0,40 Q60,10 120,25 T240,40" fill="none" stroke="#e27d2c" stroke-width="2"/></svg>
                     </div>
                 </a>
 
-                <!-- Card 3: Entry Portal -->
+                <!-- Card 3: Entry Portal (Bottom Right Overlapping) -->
                 <a href="Entry Form.html" class="float-card fc-entry">
-                    <div class="fc-icon-wrap" style="margin-bottom: 10px;">
-                        <span style="font-size: 12px; color: var(--text-muted);">Live Status</span>
+                    <div class="fc-icon-wrap" style="margin-bottom: 16px;">
+                        <span style="font-size: 13px; color: var(--text-muted);">Live Status</span>
                         <span style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981;"></span>
                     </div>
-                    <h3 style="font-size: 32px; font-weight: 700; color: #fff; line-height: 1.1;">Entry<br>Portal</h3>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">Outpass & Gate Check</p>
+                    <h3 class="fc-title">Entry<br>Portal</h3>
+                    <p class="fc-sub">Outpass & Gate Check</p>
                 </a>
 
             </div>
