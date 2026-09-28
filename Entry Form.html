@@ -8,64 +8,132 @@
 
   <style>
     :root{
-      --primary:#0f62fe;
-      --primary-dark:#0b4fd1;
-      --surface:#ffffff;
-      --line:#d9e4f5;
-      --text:#0f172a;
-      --muted:#5b6b86;
-      --shadow-sm:0 8px 22px rgba(15, 98, 254, .08);
-      --shadow-md:0 18px 40px rgba(15, 98, 254, .12);
+      --primary: #fbc02d;
+      --primary-dark: #f5b000;
+      --surface: #7d8ea5; 
+      --page-bg: #475a70; 
+      --input-bg: #1a365d; 
+      --input-border: #112543;
+      --text: #ffffff;
+      --muted: #cbd5e1;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;}
     body{
       min-height:100vh; margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text); background: radial-gradient(circle at top left, rgba(15,98,254,.12), transparent 22%), radial-gradient(circle at bottom right, rgba(96,165,250,.12), transparent 18%), linear-gradient(180deg,#f7fbff 0%,#edf4ff 52%,#f9fbff 100%);
+      color: var(--text); 
+      background: var(--page-bg);
       overflow-x:hidden; position:relative;
     }
     img{max-width:100%; height:auto; display:block;}
-    body::before, body::after{
-      content:""; position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter:blur(8px);
-    }
-    body::before{ width:220px; height:220px; background:rgba(15,98,254,.10); top:70px; left:60px; animation:floatBlob 8s ease-in-out infinite; }
-    body::after{ width:280px; height:280px; background:rgba(59,130,246,.08); right:50px; bottom:50px; animation:floatBlob 10s ease-in-out infinite; }
-    @keyframes floatBlob{ 0%,100%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-14px) translateX(8px)} }
+    
     .topbar, .main-wrap, .footer{ position:relative; z-index:1; }
-    .topbar{ display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; padding:16px 26px; background:rgba(255,255,255,.78); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); box-shadow:var(--shadow-sm); }
+    .topbar{ display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; padding:16px 26px; background:rgba(26, 54, 93, 0.9); backdrop-filter:blur(12px); border-bottom:1px solid var(--input-border); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .brand-left{ display:flex; align-items:center; gap:12px; min-width:0; }
-    .brand-left img{ width:48px; height:48px; object-fit:contain; border-radius:14px; background:#fff; padding:6px; border:1px solid var(--line); box-shadow:var(--shadow-sm); flex-shrink:0; }
-    .brand-left span{ font-size:16px; font-weight:900; color:#163469; letter-spacing:.4px; white-space:nowrap; }
+    .brand-left img{ width:48px; height:48px; object-fit:contain; border-radius:14px; background:#fff; padding:6px; flex-shrink:0; }
+    .brand-left span{ font-size:16px; font-weight:900; color:#fff; letter-spacing:.4px; white-space:nowrap; }
     .top-actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    .reg-btn{ border:none; padding:11px 18px; border-radius:999px; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 12px 26px rgba(15,98,254,.20); transition:.25s ease; text-align:center; }
-    .reg-btn:hover{ color:#fff; transform:translateY(-2px); }
-    .main-wrap{ min-height:calc(100vh - 146px); display:flex; align-items:center; justify-content:center; padding:24px 16px; }
-    .page-shell{ width:100%; max-width:620px; margin:0 auto; }
-    .card-box{ width:100%; background:rgba(255,255,255,.92); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow-md); padding:22px; position:relative; overflow:hidden; backdrop-filter:blur(12px); animation:fadeUp .65s ease; }
+    
+    .reg-btn{ border:none; padding:11px 18px; border-radius:6px; background:var(--primary); color:#1a365d; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; transition:.25s ease; text-align:center; }
+    .reg-btn:hover{ color:#000; transform:translateY(-2px); background:var(--primary-dark); }
+    
+    .main-wrap{ min-height:calc(100vh - 146px); display:flex; align-items:flex-start; justify-content:center; padding:40px 16px; }
+    .page-shell{ width:100%; max-width:800px; margin:0 auto; }
+    
+    .card-box{ width:100%; background:var(--surface); border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); position:relative; overflow:hidden; animation:fadeUp .65s ease; }
     @keyframes fadeUp{ from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-    .card-top{ display:flex; align-items:center; gap:14px; margin-bottom:14px; }
-    .card-logo{ width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg,#0f62fe,#3b82f6); display:flex; align-items:center; justify-content:center; box-shadow:0 12px 24px rgba(15,98,254,.18); flex-shrink:0; }
-    .card-logo img{ width:34px; height:34px; object-fit:contain; }
-    .card-top h2{ margin:0; font-size:22px; font-weight:1000; color:#163469; line-height:1.1; }
-    .card-top p{ margin:4px 0 0; color:var(--muted); font-size:13px; font-weight:600; line-height:1.7; }
-    .section-label{ font-size:12px; font-weight:900; color:#4b5f85; margin-bottom:5px; }
-    .form-control, .form-select{ border-radius:12px; min-height:44px; border:1px solid #d7e3f7; box-shadow:none !important; background:#fff; transition:.25s ease; font-size:14px; }
-    .form-control:focus, .form-select:focus{ border-color:#8bb5ff; box-shadow:0 0 0 .22rem rgba(15,98,254,.10)!important; transform:translateY(-1px); }
-    .readonly{ background:#f3f7fe !important; color:#5b6b86; cursor:not-allowed; }
-    .home-pass-box{ background:#f8fbff; border:1px solid #dbe8fb; border-radius:16px; padding:12px; margin-bottom:12px; }
-    .btn-submit{ width:100%; border:none; border-radius:12px; padding:12px; font-weight:900; color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); transition:.25s ease; box-shadow:0 14px 28px rgba(15,98,254,.20); min-height:46px; letter-spacing:.02em; }
-    .btn-submit:hover{ transform:translateY(-2px); }
-    .btn-submit:disabled{ opacity:.88; cursor:not-allowed; transform:none; }
-    .status-box{ margin-top:2px; margin-bottom:8px; font-size:13px; font-weight:800; min-height:18px; padding-left:2px; word-break:break-word; }
-    .toast-box{ position:absolute; top:16px; left:50%; transform:translateX(-50%) translateY(-10px); min-width:190px; max-width:340px; padding:10px 14px; border-radius:12px; color:#fff; font-weight:800; font-size:12px; text-align:center; z-index:9999; opacity:0; visibility:hidden; box-shadow:0 12px 28px rgba(0,0,0,.18); transition:all .22s ease; pointer-events:none; }
+    
+    .card-header-yellow {
+      background-color: var(--primary);
+      color: #1a365d;
+      text-align: center;
+      padding: 16px;
+    }
+    .card-header-yellow h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .card-header-yellow p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .card-body-content {
+      padding: 30px 40px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px 20px;
+    }
+    .full-width {
+      grid-column: span 2;
+    }
+    @media(max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+      .card-body-content { padding: 20px; }
+    }
+
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .section-label { 
+      position: absolute;
+      top: -10px;
+      left: 12px;
+      background: #ffffff;
+      color: #d97706;
+      font-size: 11.5px; 
+      font-weight: 700; 
+      padding: 2px 6px;
+      border-radius: 2px;
+      z-index: 5;
+    }
+
+    .form-control, .form-select { 
+      border-radius: 6px; 
+      min-height: 48px; 
+      border: 1px solid var(--input-border); 
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important; 
+      background: var(--input-bg); 
+      color: #ffffff;
+      transition: .25s ease; 
+      font-size: 14px; 
+      padding: 10px 15px;
+    }
+    .form-control::placeholder { color: #8c9fb8; }
+    .form-control:focus, .form-select:focus { 
+      border-color: var(--primary); 
+      box-shadow: 0 0 0 2px rgba(251, 192, 45, 0.3) !important; 
+      background: #1e3f6b;
+    }
+    
+    .readonly{ background: #132a4a !important; color: #a0aec0; cursor:not-allowed; }
+    
+    .home-pass-box{ background: rgba(0,0,0,0.1); border: 1px dashed #a0aec0; border-radius:8px; padding:20px; margin-top: 10px; margin-bottom: 25px; }
+    
+    .btn-submit{ width:100%; border:none; border-radius:6px; padding:14px; font-weight:900; color:#1a365d; background:var(--primary); transition:.25s ease; box-shadow:0 8px 16px rgba(0,0,0,0.15); min-height:50px; letter-spacing:.05em; font-size: 16px; margin-top: 15px;}
+    .btn-submit:hover{ transform:translateY(-2px); background: var(--primary-dark); }
+    .btn-submit:disabled{ opacity:.7; cursor:not-allowed; transform:none; }
+    
+    .status-box{ margin-top:-15px; margin-bottom:15px; font-size:13px; font-weight:800; min-height:18px; padding-left:2px; word-break:break-word; text-align: center; }
+    
+    .toast-box{ position:absolute; top:16px; left:50%; transform:translateX(-50%) translateY(-10px); min-width:190px; max-width:340px; padding:10px 14px; border-radius:12px; color:#fff; font-weight:800; font-size:12px; text-align:center; z-index:9999; opacity:0; visibility:hidden; box-shadow:0 12px 28px rgba(0,0,0,.3); transition:all .22s ease; pointer-events:none; }
     .toast-box.show{ opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
     .toast-box.success{ background:linear-gradient(45deg,#11998e,#38ef7d); }
     .toast-box.error{ background:linear-gradient(45deg,#ff416c,#ff4b2b); }
     .toast-box.info{ background:linear-gradient(45deg,#396afc,#2948ff); }
     .hidden{ display:none !important; }
-    .mini-note{ font-size:12px; color:#7a8aa8; font-weight:700; margin-top:10px; text-align:center; line-height:1.6; }
-    .footer{ text-align:center; color:#5b6b86; background:rgba(255,255,255,.74); backdrop-filter:blur(12px); padding:12px 14px; font-size:14px; font-weight:700; border-top:1px solid var(--line); }
-    @media(max-width:768px){ .topbar{padding:14px 14px;} .brand-left{width:100%;} .top-actions{width:100%;} .top-actions .reg-btn{flex:1 1 100%; width:100%;} }
+    
+    .footer{ text-align:center; color:#cbd5e1; background:rgba(26, 54, 93, 0.9); padding:16px; font-size:14px; font-weight:700; border-top:1px solid var(--input-border); }
   </style>
 </head>
 <body>
@@ -77,7 +145,6 @@
     </div>
 
     <div class="top-actions">
-      <!-- Admin & Gate Buttons Removed, Form Link Added -->
       <a href="https://forms.gle/M7V8r844wNx37jgq5" target="_blank" class="reg-btn">STUDENT REGISTRATION</a>
     </div>
   </div>
@@ -87,113 +154,113 @@
       <div class="card-box">
         <div id="toastBox" class="toast-box"></div>
 
-        <div class="card-top">
-          <div class="card-logo">
-            <img src="logo.png" alt="Smart Entry Logo">
+        <div class="card-header-yellow">
+          <h2>Entry Form</h2>
+          <p>Submit your request</p>
+        </div>
+
+        <div class="card-body-content">
+          <div class="input-wrapper full-width" style="margin-bottom: 25px;">
+            <label class="section-label">Roll Number</label>
+            <input id="roll" class="form-control" placeholder="Enter Roll Number" autocomplete="off">
           </div>
-          <div>
-            <h2>Entry Form</h2>
-            <p>Submit your request</p>
-          </div>
-        </div>
+          <div class="status-box full-width" id="fetchStatus"></div>
 
-        <div class="mb-3">
-          <label class="section-label">Roll Number</label>
-          <input id="roll" class="form-control" placeholder="Enter Roll Number" autocomplete="off">
-        </div>
+          <div class="form-grid">
+            <div class="input-wrapper">
+              <label class="section-label">Full Name</label>
+              <input id="name" class="form-control readonly" placeholder="Full Name" readonly>
+            </div>
 
-        <div class="mb-3 status-box" id="fetchStatus"></div>
+            <div class="input-wrapper">
+              <label class="section-label">Student Phone Number</label>
+              <input id="phone" class="form-control readonly" placeholder="Student Phone Number" readonly>
+            </div>
 
-        <div class="mb-3">
-          <label class="section-label">Full Name</label>
-          <input id="name" class="form-control readonly" placeholder="Full Name" readonly>
-        </div>
+            <div class="input-wrapper">
+              <label class="section-label">Branch</label>
+              <input id="branch" class="form-control readonly" placeholder="Branch" readonly>
+            </div>
 
-        <div class="mb-3">
-          <label class="section-label">Student Phone Number</label>
-          <input id="phone" class="form-control readonly" placeholder="Student Phone Number" readonly>
-        </div>
+            <div class="input-wrapper">
+              <label class="section-label">Year</label>
+              <input id="year" class="form-control readonly" placeholder="Year" readonly>
+            </div>
 
-        <div class="mb-3">
-          <label class="section-label">Branch</label>
-          <input id="branch" class="form-control readonly" placeholder="Branch" readonly>
-        </div>
+            <div class="input-wrapper">
+              <label class="section-label">Hostel</label>
+              <input id="hostel" class="form-control readonly" placeholder="Hostel" readonly>
+            </div>
 
-        <div class="mb-3">
-          <label class="section-label">Year</label>
-          <input id="year" class="form-control readonly" placeholder="Year" readonly>
-        </div>
+            <div class="input-wrapper">
+              <label class="section-label">Room Number</label>
+              <input id="room" class="form-control readonly" placeholder="Room Number" readonly>
+            </div>
 
-        <div class="mb-3">
-          <label class="section-label">Hostel</label>
-          <input id="hostel" class="form-control readonly" placeholder="Hostel" readonly>
-        </div>
-
-        <div class="mb-3">
-          <label class="section-label">Room Number</label>
-          <input id="room" class="form-control readonly" placeholder="Room Number" readonly>
-        </div>
-
-        <div class="mb-3">
-          <label class="section-label">Request Type</label>
-          <select id="type" class="form-select">
-            <option value="">Select Type</option>
-            <option value="OUT">OUT</option>
-            <option value="IN">IN</option>
-            <option value="HOME PASS">HOME PASS</option>
-          </select>
-        </div>
-
-        <div id="homePassBox" class="home-pass-box hidden">
-          <div class="mb-3">
-            <label class="section-label">From Date</label>
-            <input id="fromDate" type="date" class="form-control">
+            <div class="input-wrapper full-width">
+              <label class="section-label">Request Type</label>
+              <select id="type" class="form-select">
+                <option value="">Select Type</option>
+                <option value="OUT">OUT</option>
+                <option value="IN">IN</option>
+                <option value="HOME PASS">HOME PASS</option>
+              </select>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="section-label">To Date</label>
-            <input id="toDate" type="date" class="form-control">
+          <div id="homePassBox" class="home-pass-box hidden">
+            <div class="form-grid">
+              <div class="input-wrapper">
+                <label class="section-label">From Date</label>
+                <input id="fromDate" type="date" class="form-control">
+              </div>
+
+              <div class="input-wrapper">
+                <label class="section-label">To Date</label>
+                <input id="toDate" type="date" class="form-control">
+              </div>
+
+              <div class="input-wrapper full-width">
+                <label class="section-label">Reason</label>
+                <input id="reason" class="form-control" placeholder="Enter reason">
+              </div>
+
+              <div class="input-wrapper">
+                <label class="section-label">Father Phone Number</label>
+                <input id="fatherPhone" class="form-control" placeholder="Enter father phone number">
+              </div>
+
+              <div class="input-wrapper">
+                <label class="section-label">Father Name</label>
+                <input id="fatherName" class="form-control readonly" placeholder="Father Name" readonly>
+              </div>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="section-label">Reason</label>
-            <input id="reason" class="form-control" placeholder="Enter reason">
-          </div>
+          <button id="submitBtn" class="btn-submit" type="button">Submit Request & Generate Auto Pass</button>
 
-          <div class="mb-3">
-            <label class="section-label">Father Phone Number</label>
-            <input id="fatherPhone" class="form-control" placeholder="Enter father phone number">
-          </div>
+          <!-- Generated Pass Ticket Card -->
+          <div id="passTicketCard" style="display:none; margin-top:24px; padding:20px; background:#0f2440; border:2px dashed #fbc02d; border-radius:8px; color:#fff; text-align:center;">
+            <div style="font-size:12px; font-weight:800; color:#10b981; letter-spacing:1px; margin-bottom:4px;">AUTO-APPROVED (NO WARDEN APPROVAL NEEDED)</div>
+            <h4 id="passTicketName" style="margin:4px 0; color:#fff; font-weight:800;">Student Name</h4>
+            <p id="passTicketRoll" style="font-size:13px; color:#a0aec0; margin-bottom:12px;">Roll: -----</p>
+            
+            <div style="background:rgba(0,0,0,0.2); border:1px solid #1a365d; border-radius:6px; padding:14px; margin-bottom:16px;">
+              <div style="font-size:12px; color:#a0aec0; text-transform:uppercase;">6-Digit Return Code</div>
+              <div id="passTicketCode" style="font-size:32px; font-weight:900; color:#fbc02d; letter-spacing:6px; font-family:monospace;">------</div>
+              <div id="passTicketValidity" style="font-size:13px; font-weight:700; color:#10b981; margin-top:6px;">Valid Until: --</div>
+            </div>
 
-          <div class="mb-3">
-            <label class="section-label">Father Name</label>
-            <input id="fatherName" class="form-control readonly" placeholder="Father Name" readonly>
-          </div>
-        </div>
+            <div style="display:flex; justify-content:center; margin-bottom:16px;">
+              <div id="passTicketQrContainer" style="background:#fff; padding:12px; border-radius:8px; display:inline-block;"></div>
+            </div>
 
-        <button id="submitBtn" class="btn-submit" type="button">Submit Request & Generate Auto Pass</button>
-
-        <!-- Generated Pass Ticket Card -->
-        <div id="passTicketCard" style="display:none; margin-top:24px; padding:20px; background:#030914; border:2px dashed #0f62fe; border-radius:18px; color:#fff; text-align:center;">
-          <div style="font-size:12px; font-weight:800; color:#10b981; letter-spacing:1px; margin-bottom:4px;">AUTO-APPROVED (NO WARDEN APPROVAL NEEDED)</div>
-          <h4 id="passTicketName" style="margin:4px 0; color:#fff; font-weight:800;">Student Name</h4>
-          <p id="passTicketRoll" style="font-size:13px; color:#94a3b8; margin-bottom:12px;">Roll: -----</p>
-          
-          <div style="background:rgba(15,98,254,0.15); border:1px solid #0f62fe; border-radius:12px; padding:14px; margin-bottom:16px;">
-            <div style="font-size:12px; color:#94a3b8; text-transform:uppercase;">6-Digit Return Code</div>
-            <div id="passTicketCode" style="font-size:32px; font-weight:900; color:#ffb800; letter-spacing:6px; font-family:monospace;">------</div>
-            <div id="passTicketValidity" style="font-size:13px; font-weight:700; color:#10b981; margin-top:6px;">Valid Until: --</div>
-          </div>
-
-          <div style="display:flex; justify-content:center; margin-bottom:16px;">
-            <div id="passTicketQrContainer" style="background:#fff; padding:12px; border-radius:12px; display:inline-block;"></div>
-          </div>
-
-          <div id="passRuleNotice" style="font-size:12px; color:#cbd5e1; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; line-height:1.4;">
-           ⚠️ Important Notice
-               Gate Scan: Mandatory camera scan upon entry.
-               Validity: Outing till 9:00 PM | Home Pass till 12:00 AM (Return Date).
-               Late Entry: Attracts a fine + automated email to Student, Parent & Warden.
+            <div id="passRuleNotice" style="font-size:12px; color:#cbd5e1; background:rgba(255,255,255,0.05); padding:10px; border-radius:6px; line-height:1.4;">
+              ⚠️ Important Notice<br>
+              Gate Scan: Mandatory camera scan upon entry.<br>
+              Validity: Outing till 9:00 PM | Home Pass till 12:00 AM (Return Date).<br>
+              Late Entry: Attracts a fine + automated email to Student, Parent & Warden.
+            </div>
           </div>
         </div>
       </div>
@@ -262,7 +329,7 @@
     if (!roll) { clearStudentFields(); setFetchStatus(""); return; }
 
     try {
-      setFetchStatus("Fetching student...", "#0f62fe");
+      setFetchStatus("Fetching student...", "#fbc02d");
       let studentRes = null; let profileRes = null;
 
       try {
@@ -279,14 +346,14 @@
 
         currentProfile = (profileRes && profileRes.ok) ? (profileRes.profile || {}) : null;
         fillStudentFields(currentStudent, currentProfile);
-        setFetchStatus("Student fetched successfully", "green");
+        setFetchStatus("Student fetched successfully", "#10b981");
         return;
       }
       clearStudentFields();
-      setFetchStatus("Student not found", "red");
+      setFetchStatus("Student not found", "#ff4b2b");
     } catch (err) {
       clearStudentFields();
-      setFetchStatus("Fetch failed", "red");
+      setFetchStatus("Fetch failed", "#ff4b2b");
     }
   }
 
