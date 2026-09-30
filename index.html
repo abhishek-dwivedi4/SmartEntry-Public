@@ -12,21 +12,21 @@
         rel="stylesheet">
     <style>
         :root {
-            /* Synexis-inspired Deep Space & Neon Theme Variables */
-            --vande-bg: #090314; /* Deep dark purple background */
-            --vande-bg-surface: #110526;
-            --vande-card: rgba(17, 5, 38, 0.4);
-            --vande-card-border: rgba(138, 43, 226, 0.2);
-            --vande-orange: #8a2be2; /* Deep Purple */
-            --vande-orange-bright: #d946ef; /* Bright Neon Pink */
-            --vande-orange-glow: rgba(217, 70, 239, 0.4);
-            --vande-gold: #00f2fe; /* Bright Cyan/Blue */
-            --vande-green: #4ade80; /* Neon Green */
+            /* Premium AI Dark & Gold Theme Variables */
+            --vande-bg: #050403;
+            --vande-bg-surface: #0a0806;
+            --vande-card: rgba(20, 18, 15, 0.6);
+            --vande-card-border: rgba(229, 169, 96, 0.15);
+            --vande-orange: #E5A960; /* Bronze/Gold */
+            --vande-orange-bright: #F3BA75; /* Bright Gold */
+            --vande-orange-glow: rgba(229, 169, 96, 0.35);
+            --vande-gold: #E5A960;
+            --vande-green: #10B981;
             --vande-text: #F4EFEA;
-            --vande-muted: #94a3b8;
-            --vande-line: rgba(255, 255, 255, 0.08);
+            --vande-muted: #A39B92;
+            --vande-line: rgba(255, 255, 255, 0.05);
             --vande-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-            --vande-shadow-lg: 0 24px 60px rgba(138, 43, 226, 0.25);
+            --vande-shadow-lg: 0 24px 60px rgba(229, 169, 96, 0.15);
             --radius: 20px;
         }
 
@@ -66,7 +66,7 @@
             font: inherit;
         }
 
-        /* Background Ambient Glows - Synexis Style */
+        /* Background Ambient Glows - AI Style */
         body::before,
         body::after {
             content: "";
@@ -75,21 +75,21 @@
             pointer-events: none;
             z-index: 0;
             filter: blur(140px);
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         body::before {
-            width: 600px;
-            height: 600px;
-            background: rgba(138, 43, 226, 0.3);
+            width: 500px;
+            height: 500px;
+            background: var(--vande-orange);
             top: -150px;
             left: -150px;
         }
 
         body::after {
-            width: 700px;
-            height: 700px;
-            background: rgba(217, 70, 239, 0.2);
+            width: 600px;
+            height: 600px;
+            background: rgba(229, 169, 96, 0.5);
             bottom: -200px;
             right: -200px;
         }
@@ -103,8 +103,6 @@
 
         .section {
             padding: 90px 0;
-            position: relative;
-            z-index: 2;
         }
 
         .section-dark {
@@ -119,12 +117,10 @@
 
         /* Topbar */
         .topbar {
-            background: rgba(9, 3, 20, 0.9);
+            background: rgba(5, 4, 3, 0.9);
             color: var(--vande-muted);
             font-size: 13px;
             border-bottom: 1px solid var(--vande-line);
-            position: relative;
-            z-index: 1000;
         }
 
         .topbar-wrap {
@@ -156,8 +152,8 @@
             gap: 6px;
             padding: 3px 10px;
             border-radius: 999px;
-            background: rgba(0, 242, 254, 0.12);
-            border: 1px solid rgba(0, 242, 254, 0.3);
+            background: rgba(229, 169, 96, 0.12);
+            border: 1px solid rgba(229, 169, 96, 0.3);
             color: var(--vande-gold);
             font-weight: 700;
             font-size: 11px;
@@ -168,9 +164,10 @@
             position: sticky;
             top: 0;
             z-index: 999;
-            background: rgba(9, 3, 20, 0.6);
+            background: rgba(5, 4, 3, 0.7);
             backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--vande-line);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .nav {
@@ -200,12 +197,12 @@
             height: 52px;
             border-radius: 16px;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--vande-orange), var(--vande-gold));
+            background: linear-gradient(135deg, var(--vande-orange), #0a0806);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px var(--vande-orange-glow);
+            border: 1px solid rgba(229, 169, 96, 0.4);
             flex-shrink: 0;
             transition: .25s ease;
         }
@@ -247,15 +244,31 @@
         .nav-links a {
             font-size: 14px;
             font-weight: 600;
-            color: #FFF;
+            color: var(--vande-muted);
             position: relative;
             transition: .25s ease;
-            text-transform: capitalize;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .nav-links a:hover {
             color: var(--vande-gold);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: var(--vande-gold);
+            transition: .25s ease;
+            border-radius: 999px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-actions {
@@ -267,14 +280,14 @@
         .menu-toggle {
             display: none;
             border: none;
-            background: rgba(138, 43, 226, 0.12);
+            background: rgba(229, 169, 96, 0.12);
             color: var(--vande-gold);
             width: 46px;
             height: 46px;
             border-radius: 14px;
             font-size: 22px;
             cursor: pointer;
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            border: 1px solid rgba(229, 169, 96, 0.3);
         }
 
         /* Buttons */
@@ -285,119 +298,53 @@
             gap: 8px;
             border: none;
             cursor: pointer;
-            padding: 12px 28px;
-            border-radius: 999px; /* Pill shape */
-            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 700;
             font-size: 14px;
             transition: .3s ease;
             text-align: center;
         }
 
         .btn-vande {
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, var(--vande-orange) 0%, var(--vande-orange-bright) 100%);
             color: #000;
-            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 10px 25px var(--vande-orange-glow);
         }
 
         .btn-vande:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.5);
-            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(229, 169, 96, 0.5);
+            color: #000;
         }
 
         .btn-outline-vande {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #FFF;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--vande-card-border);
+            color: var(--vande-text);
             backdrop-filter: blur(10px);
         }
 
         .btn-outline-vande:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #FFF;
-            transform: translateY(-2px);
+            background: rgba(229, 169, 96, 0.1);
+            color: #FFF;
+            border-color: var(--vande-gold);
+            transform: translateY(-3px);
         }
 
-        /* Hero Redesign (Centered with Rings & Floating Object) */
+        /* Hero */
         .hero {
             position: relative;
             overflow: hidden;
             background: transparent;
-            padding: 140px 0 100px;
-            text-align: center;
-            min-height: 90vh;
-            display: flex;
+            padding: 96px 0 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 36px;
             align-items: center;
-            justify-content: center;
-        }
-
-        /* Animated Background Rings */
-        .hero-bg-animations {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transform: translate(-50%, -50%);
-        }
-
-        .ring-1 {
-            width: 50vw; height: 50vw;
-            border-top: 2px solid var(--vande-green);
-            animation: spin 20s linear infinite;
-        }
-        .ring-2 {
-            width: 70vw; height: 70vw;
-            border-right: 2px solid var(--vande-orange-bright);
-            animation: spinReverse 35s linear infinite;
-        }
-        .ring-3 {
-            width: 90vw; height: 90vw;
-            border-bottom: 2px solid var(--vande-gold);
-            animation: spin 50s linear infinite;
-        }
-
-        /* Floating Central Abstract Object */
-        .abstract-shape {
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            width: 400px;
-            height: 400px;
-            margin-left: -200px;
-            margin-top: -200px;
-            background: radial-gradient(circle, rgba(138,43,226,0.8) 0%, rgba(217,70,239,0.3) 40%, transparent 70%);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            filter: blur(10px);
-            animation: morphFloat 10s ease-in-out infinite alternate;
-            z-index: 0;
-            opacity: 0.6;
-        }
-
-        @keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes spinReverse { 0% { transform: translate(-50%, -50%) rotate(360deg); } 100% { transform: translate(-50%, -50%) rotate(0deg); } }
-        @keyframes morphFloat {
-            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translateY(0px) rotate(0deg) scale(1); }
-            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translateY(-40px) rotate(20deg) scale(1.1); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .eyebrow {
@@ -406,25 +353,22 @@
             gap: 8px;
             padding: 8px 16px;
             border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: transparent;
-            color: var(--vande-text);
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 24px;
+            border: 1px solid rgba(229, 169, 96, 0.35);
+            background: rgba(229, 169, 96, 0.12);
+            color: var(--vande-gold);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: 64px;
+            font-size: 52px;
             line-height: 1.1;
             font-weight: 800;
-            margin-bottom: 24px;
-            color: #FFF;
-        }
-
-        .hero h1 .gradient-text {
-            /* Synexis style text gradient */
-            background: linear-gradient(90deg, var(--vande-green), var(--vande-gold), var(--vande-orange-bright));
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--vande-gold) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -432,71 +376,67 @@
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
             line-height: 1.8;
             color: var(--vande-muted);
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 30px;
         }
 
         .hero-btns {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 60px;
+            gap: 14px;
+            margin-bottom: 32px;
         }
 
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
-            margin-top: 40px;
-            border-top: 1px solid var(--vande-line);
-            padding-top: 40px;
         }
 
         .hero-stat {
-            padding: 10px;
-            text-align: center;
+            padding: 18px;
+            border-radius: 18px;
+            background: var(--vande-card);
+            border: 1px solid var(--vande-card-border);
+            backdrop-filter: blur(24px);
+            transition: 0.3s ease;
+        }
+
+        .hero-stat:hover {
+            transform: translateY(-5px);
+            border-color: var(--vande-gold);
+            box-shadow: 0 10px 20px rgba(229, 169, 96, 0.15);
         }
 
         .hero-stat h3 {
-            font-size: 32px;
-            color: #FFF;
-            margin-bottom: 8px;
+            font-size: 26px;
+            color: var(--vande-orange-bright);
+            margin-bottom: 4px;
             font-weight: 800;
         }
 
         .hero-stat p {
-            font-size: 14px;
+            font-size: 12px;
             margin: 0;
             color: var(--vande-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            line-height: 1.5;
         }
 
-        /* Floating Hero Card Animation (Centered below text) */
+        /* Floating Hero Card Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
 
-        .hero-card-wrapper {
-            max-width: 700px;
-            margin: 40px auto 0;
-            text-align: left;
-        }
-
         .hero-card {
-            background: rgba(10, 5, 25, 0.7);
+            background: var(--vande-card);
             border: 1px solid var(--vande-card-border);
             border-radius: 28px;
             padding: 26px;
             backdrop-filter: blur(24px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(138,43,226,0.2) inset;
+            box-shadow: var(--vande-shadow-lg);
             animation: float 6s ease-in-out infinite;
         }
 
@@ -517,17 +457,17 @@
         .live-badge {
             padding: 6px 14px;
             border-radius: 999px;
-            background: rgba(74, 222, 128, 0.15);
-            color: var(--vande-green);
+            background: rgba(16, 185, 129, 0.18);
+            color: #34D399;
             font-size: 12px;
             font-weight: 800;
-            border: 1px solid rgba(74, 222, 128, 0.3);
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
 
         .dashboard-preview {
             border-radius: 20px;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.4);
             padding: 20px;
             border: 1px solid var(--vande-line);
         }
@@ -541,21 +481,21 @@
 
         .mini-box {
             padding: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(229, 169, 96, 0.15);
             border-radius: 16px;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(229, 169, 96, 0.04);
             transition: 0.3s ease;
         }
 
         .mini-box:hover {
-            background: rgba(138, 43, 226, 0.1);
-            border-color: var(--vande-orange-bright);
+            background: rgba(229, 169, 96, 0.1);
+            border-color: var(--vande-gold);
         }
 
         .mini-box strong {
             display: block;
             font-size: 22px;
-            color: #FFF;
+            color: var(--vande-gold);
             margin-bottom: 4px;
         }
 
@@ -585,7 +525,7 @@
         }
 
         .mini-item b {
-            color: var(--vande-gold);
+            color: var(--vande-orange-bright);
         }
 
         /* Section Headings */
@@ -598,14 +538,14 @@
             display: inline-block;
             padding: 6px 16px;
             border-radius: 999px;
-            background: rgba(138, 43, 226, 0.15);
-            color: var(--vande-orange-bright);
+            background: rgba(229, 169, 96, 0.12);
+            color: var(--vande-gold);
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 12px;
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            border: 1px solid rgba(229, 169, 96, 0.25);
         }
 
         .section-head h2 {
@@ -614,6 +554,7 @@
             color: #FFF;
             margin-bottom: 14px;
             font-weight: 800;
+            text-transform: uppercase;
         }
 
         .section-head p {
@@ -625,14 +566,28 @@
         }
 
         /* Grids */
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
 
         /* Animated Glass Cards */
         .card, .notice-panel, .policy-panel, .about-panel, .contact-card, .contact-form {
             background: var(--vande-card);
-            border: 1px solid var(--vande-line);
+            border: 1px solid var(--vande-card-border);
             border-radius: var(--radius);
             padding: 28px;
             box-shadow: var(--vande-shadow);
@@ -658,9 +613,8 @@
 
         .card:hover, .notice-panel:hover, .policy-panel:hover, .about-panel:hover, .contact-card:hover, .contact-form:hover {
             transform: translateY(-8px);
-            border-color: var(--vande-card-border);
-            box-shadow: 0 20px 45px rgba(138, 43, 226, 0.2);
-            background: rgba(25, 10, 50, 0.6);
+            border-color: var(--vande-gold);
+            box-shadow: 0 20px 45px rgba(229, 169, 96, 0.15);
         }
 
         .card:hover::before, .about-panel:hover::before, .contact-form:hover::before {
@@ -674,12 +628,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--vande-gold);
+            background: rgba(229, 169, 96, 0.12);
+            color: var(--vande-orange-bright);
             font-size: 26px;
             margin-bottom: 18px;
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(229, 169, 96, 0.3);
+            box-shadow: inset 0 0 20px rgba(229, 169, 96, 0.1);
         }
 
         .card h3 {
@@ -707,7 +661,7 @@
 
         .card a:hover {
             color: var(--vande-gold);
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+            text-shadow: 0 0 10px rgba(229, 169, 96, 0.5);
         }
 
         /* Notices & Policies */
@@ -726,7 +680,7 @@
             font-weight: 800;
         }
 
-        .notice-list, .policy-list {
+        .notice-list {
             display: grid;
             gap: 14px;
         }
@@ -743,16 +697,16 @@
         }
 
         .notice-item:hover {
-            border-color: rgba(138, 43, 226, 0.4);
-            background: rgba(138, 43, 226, 0.05);
+            border-color: rgba(229, 169, 96, 0.3);
+            background: rgba(229, 169, 96, 0.05);
         }
 
         .notice-date {
             min-width: 68px;
             text-align: center;
             border-radius: 14px;
-            background: linear-gradient(135deg, var(--vande-orange), var(--vande-orange-bright));
-            color: #FFF;
+            background: linear-gradient(135deg, var(--vande-orange), #C76B28);
+            color: #000;
             padding: 10px 8px;
             box-shadow: 0 6px 16px var(--vande-orange-glow);
         }
@@ -784,6 +738,11 @@
             font-size: 13px;
             color: var(--vande-muted);
             line-height: 1.6;
+        }
+
+        .policy-list {
+            display: grid;
+            gap: 12px;
         }
 
         .policy-item {
@@ -867,7 +826,7 @@
         }
 
         .about-item:hover {
-            border-color: rgba(0, 242, 254, 0.4);
+            border-color: rgba(229, 169, 96, 0.3);
         }
 
         .about-item h4 {
@@ -897,8 +856,8 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 16px;
-            background: linear-gradient(135deg, rgba(138,43,226,0.3), rgba(217,70,239,0.1));
-            color: var(--vande-gold);
+            background: linear-gradient(135deg, rgba(229, 169, 96, 0.2), rgba(229, 169, 96, 0.05));
+            color: var(--vande-orange-bright);
             font-size: 26px;
             font-weight: 800;
             border: 3px solid var(--vande-orange);
@@ -909,7 +868,7 @@
             display: inline-block;
             padding: 5px 12px;
             border-radius: 999px;
-            background: rgba(0, 242, 254, 0.15);
+            background: rgba(229, 169, 96, 0.12);
             color: var(--vande-gold);
             font-size: 12px;
             font-weight: 700;
@@ -919,7 +878,7 @@
         /* Safety & Verification Section */
         .safety-card {
             background: rgba(0,0,0,0.4);
-            border: 1px solid var(--vande-line);
+            border: 1px solid var(--vande-card-border);
             border-radius: 20px;
             padding: 24px;
             backdrop-filter: blur(10px);
@@ -928,12 +887,12 @@
 
         .safety-card:hover {
             transform: translateY(-5px);
-            border-color: var(--vande-orange-bright);
-            box-shadow: 0 10px 30px rgba(217, 70, 239, 0.15);
+            border-color: var(--vande-gold);
+            box-shadow: 0 10px 30px rgba(229, 169, 96, 0.15);
         }
 
         .safety-card h4 {
-            color: #FFF;
+            color: var(--vande-gold);
             font-size: 18px;
             font-weight: 800;
             margin-bottom: 8px;
@@ -949,7 +908,7 @@
         /* Rules */
         .rule-box {
             background: var(--vande-card);
-            border: 1px solid var(--vande-line);
+            border: 1px solid var(--vande-card-border);
             border-radius: 22px;
             padding: 26px;
             color: #FFF;
@@ -980,7 +939,7 @@
         .cta-box {
             border-radius: 30px;
             padding: 48px;
-            background: linear-gradient(135deg, rgba(17,5,38,0.8) 0%, rgba(138,43,226,0.3) 100%);
+            background: linear-gradient(135deg, rgba(20, 18, 15, 0.8) 0%, rgba(229, 169, 96, 0.2) 100%);
             border: 1px solid var(--vande-orange);
             box-shadow: var(--vande-shadow-lg);
             text-align: center;
@@ -1080,9 +1039,9 @@
 
         .field input:focus,
         .field textarea:focus {
-            border-color: var(--vande-orange-bright);
+            border-color: var(--vande-orange);
             box-shadow: 0 0 0 3px var(--vande-orange-glow);
-            background: rgba(138,43,226, 0.1);
+            background: rgba(229, 169, 96, 0.05);
         }
 
         .field textarea {
@@ -1092,12 +1051,10 @@
 
         /* Footer */
         .footer {
-            background: rgba(9, 3, 20, 0.9);
+            background: rgba(5, 4, 3, 0.9);
             color: var(--vande-muted);
             padding: 60px 0 24px;
             border-top: 1px solid var(--vande-line);
-            position: relative;
-            z-index: 2;
         }
 
         .footer-grid {
@@ -1129,7 +1086,7 @@
         }
 
         .footer a:hover {
-            color: var(--vande-gold);
+            color: var(--vande-orange-bright);
         }
 
         .footer-bottom {
@@ -1197,7 +1154,7 @@
             width: 60px;
             height: 60px;
             border-radius: 18px;
-            background: rgba(138, 43, 226, 0.15);
+            background: rgba(229, 169, 96, 0.15);
             border: 1px solid var(--vande-orange);
             color: var(--vande-gold);
             font-size: 28px;
@@ -1228,7 +1185,7 @@
 
         .staff-modal-btn {
             padding: 14px;
-            border-radius: 999px;
+            border-radius: 14px;
             font-weight: 800;
             font-size: 14px;
             border: none;
@@ -1237,9 +1194,9 @@
         }
 
         .staff-modal-btn.admin-btn {
-            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            background: linear-gradient(135deg, var(--vande-orange), #C76B28);
             color: #000;
-            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 8px 20px var(--vande-orange-glow);
         }
 
         .staff-modal-btn.gate-btn {
@@ -1261,10 +1218,10 @@
             z-index: 3000;
             min-width: 280px;
             max-width: 380px;
-            background: rgba(9, 3, 20, 0.95);
+            background: rgba(5, 4, 3, 0.95);
             color: #FFF;
             border: 1px solid var(--vande-card-border);
-            border-left: 5px solid var(--vande-orange-bright);
+            border-left: 5px solid var(--vande-orange);
             border-radius: 16px;
             box-shadow: var(--vande-shadow-lg);
             padding: 16px 18px;
@@ -1287,7 +1244,7 @@
             border-left-color: #EF4444;
         }
 
-        /* CHATBOT Button */
+        /* CHATBOT (Redesigned as 'Ask Agent' Pill - Ref 9) */
         .chatbot-toggle {
             position: fixed;
             right: 20px;
@@ -1297,11 +1254,11 @@
             height: 56px;
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 999px;
-            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            background: linear-gradient(135deg, var(--vande-orange), #C76B28);
             color: #000;
             font-size: 20px;
             cursor: pointer;
-            box-shadow: 0 14px 35px rgba(0, 242, 254, 0.4);
+            box-shadow: 0 14px 35px var(--vande-orange-glow);
             z-index: 2200;
             display: flex;
             align-items: center;
@@ -1322,7 +1279,6 @@
             transform: scale(1.05);
         }
 
-        /* Chatbot Window */
         .chatbot-box {
             position: fixed;
             right: 20px;
@@ -1330,7 +1286,7 @@
             width: 390px;
             max-width: calc(100vw - 24px);
             height: 580px;
-            background: rgba(17, 5, 38, 0.95);
+            background: rgba(10, 8, 6, 0.95);
             backdrop-filter: blur(24px);
             border: 1px solid var(--vande-card-border);
             border-radius: 24px;
@@ -1350,14 +1306,14 @@
         }
 
         .chatbot-header {
-            background: rgba(9, 3, 20, 0.9);
+            background: linear-gradient(135deg, rgba(20,18,15,0.8), #1a1510 50%, var(--vande-orange));
             color: #FFF;
             padding: 16px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 10px;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            border-bottom: 1px solid rgba(229, 169, 96, 0.2);
         }
 
         .chatbot-head-left {
@@ -1371,13 +1327,13 @@
             width: 42px;
             height: 42px;
             border-radius: 12px;
-            background: rgba(0, 242, 254, 0.2);
+            background: rgba(229, 169, 96, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
             flex-shrink: 0;
-            border: 1px solid var(--vande-gold);
+            border: 1px solid var(--vande-orange);
         }
 
         .chatbot-title-wrap {
@@ -1431,11 +1387,11 @@
         }
 
         .welcome-card {
-            background: rgba(138, 43, 226, 0.15);
+            background: linear-gradient(135deg, rgba(20,18,15,0.8), rgba(229,169,96,0.1));
             color: #FFF;
             border-radius: 18px;
             padding: 16px;
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            border: 1px solid rgba(229, 169, 96, 0.25);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
@@ -1470,8 +1426,8 @@
         }
 
         .quick-card:hover {
-            border-color: var(--vande-gold);
-            background: rgba(0, 242, 254, 0.1);
+            border-color: var(--vande-orange);
+            background: rgba(229,169,96,0.1);
         }
 
         .quick-card strong {
@@ -1507,9 +1463,9 @@
             align-items: center;
             justify-content: center;
             font-size: 13px;
-            background: rgba(138, 43, 226, 0.2);
+            background: rgba(229, 169, 96, 0.15);
             color: var(--vande-orange-bright);
-            border: 1px solid rgba(138, 43, 226, 0.4);
+            border: 1px solid rgba(229, 169, 96, 0.3);
         }
 
         .chat-row.user .bubble-avatar {
@@ -1540,7 +1496,7 @@
         }
 
         .user-msg {
-            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            background: linear-gradient(135deg, var(--vande-orange), #C76B28);
             color: #000;
             border-top-right-radius: 4px;
             font-weight: 500;
@@ -1568,12 +1524,12 @@
             display: inline-block;
             padding: 6px 10px;
             border-radius: 8px;
-            background: rgba(0, 242, 254, 0.15);
+            background: rgba(229, 169, 96, 0.15);
             color: var(--vande-gold);
             font-size: 11.5px;
             font-weight: 700;
             text-decoration: none;
-            border: 1px solid rgba(0, 242, 254, 0.3);
+            border: 1px solid rgba(229, 169, 96, 0.3);
         }
 
         .typing-wrap {
@@ -1597,12 +1553,17 @@
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: var(--vande-gold);
+            background: var(--vande-orange);
             animation: typingBounce 1s infinite ease-in-out;
         }
 
-        .typing-dot:nth-child(2) { animation-delay: .15s; }
-        .typing-dot:nth-child(3) { animation-delay: .3s; }
+        .typing-dot:nth-child(2) {
+            animation-delay: .15s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: .3s;
+        }
 
         @keyframes typingBounce {
             0%, 80%, 100% { transform: translateY(0); opacity: .4; }
@@ -1610,7 +1571,7 @@
         }
 
         .chatbot-footer {
-            background: rgba(9, 3, 20, 0.9);
+            background: rgba(5,4,3,0.9);
             border-top: 1px solid var(--vande-line);
         }
 
@@ -1622,9 +1583,9 @@
         }
 
         .suggestion-btn {
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            border: 1px solid rgba(229, 169, 96, 0.25);
             background: rgba(0,0,0,0.5);
-            color: var(--vande-orange-bright);
+            color: var(--vande-gold);
             font-size: 11px;
             padding: 6px 10px;
             border-radius: 999px;
@@ -1642,8 +1603,8 @@
         .chatbot-input {
             flex: 1;
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            padding: 11px 16px;
+            border-radius: 14px;
+            padding: 11px 13px;
             outline: none;
             font-size: 13.5px;
             background: rgba(0,0,0,0.5);
@@ -1651,26 +1612,27 @@
         }
 
         .chatbot-input:focus {
-            border-color: var(--vande-gold);
-            box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.2);
+            border-color: var(--vande-orange);
+            box-shadow: 0 0 0 3px var(--vande-orange-glow);
         }
 
         .chatbot-send {
             border: none;
-            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            background: linear-gradient(135deg, var(--vande-orange), #C76B28);
             color: #000;
-            border-radius: 999px;
-            padding: 10px 16px;
+            border-radius: 14px;
+            padding: 10px 14px;
             cursor: pointer;
             font-weight: 700;
         }
 
-        /* Responsive */
         @media (max-width:1100px) {
-            .notice-wrap, .contact-layout, .grid-2, .footer-grid { grid-template-columns: 1fr; }
+            .hero-grid, .notice-wrap, .contact-layout, .grid-2, .footer-grid {
+                grid-template-columns: 1fr;
+            }
             .grid-4 { grid-template-columns: repeat(2, 1fr); }
             .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .hero h1 { font-size: 52px; }
+            .hero h1 { font-size: 42px; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); }
         }
 
@@ -1685,7 +1647,7 @@
                 left: 16px;
                 right: 16px;
                 top: 100%;
-                background: rgba(17, 5, 38, 0.95);
+                background: rgba(10, 8, 6, 0.95);
                 backdrop-filter: blur(24px);
                 border: 1px solid var(--vande-card-border);
                 border-radius: 20px;
@@ -1699,7 +1661,7 @@
             .nav-links.show { display: flex; }
             .nav-actions .btn { display: none; }
             .section-head h2 { font-size: 32px; }
-            .hero h1 { font-size: 42px; }
+            .hero h1 { font-size: 36px; }
             .form-row, .about-highlights, .dashboard-row { grid-template-columns: 1fr; }
         }
 
@@ -1709,7 +1671,7 @@
             .hero-btns, .cta-actions { flex-direction: column; }
             .btn { width: 100%; }
             .cta-box { padding: 28px 20px; }
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 30px; }
             .hero-card, .contact-form, .notice-panel, .policy-panel, .about-panel { padding: 20px; }
             .chatbot-box {
                 right: 12px;
@@ -1775,90 +1737,77 @@
         </div>
     </header>
 
-    <!-- Hero Section (Centered layout with animated background rings and floating shape) -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-bg-animations">
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-            <div class="ring ring-3"></div>
-            <div class="abstract-shape"></div>
-        </div>
-        
-        <div class="container hero-content">
-            <div class="eyebrow">DIGITALISED HOSTEL MOVEMENT</div>
-            <h1>
-                Grassroots Digital Innovation for <br/> 
-                <span class="gradient-text">Modern Hostel Entry & Safety</span>
-            </h1>
-            <p>
-                A next-generation institutional portal for digital student onboarding, approved outpass workflows,
-                real-time gate verification, transparent administration, and automated fine monitoring.
-            </p>
+        <div class="container hero-grid">
+            <div>
+                <div class="eyebrow">DIGITALISED HOSTEL MOVEMENT</div>
+                <h1>Grassroots Digital Innovation for Modern Hostel Entry & Safety</h1>
+                <p>
+                    A next-generation institutional portal for digital student onboarding, approved outpass workflows,
+                    real-time gate verification, transparent administration, and automated fine monitoring.
+                </p>
 
-            <div class="hero-btns">
-                <a href="https://forms.gle/M7V8r844wNx37jgq5" target="_blank" class="btn btn-vande">Student Registration</a>
-                <a href="Entry Form.html" class="btn btn-outline-vande">Student Portal</a>
-            </div>
+                <div class="hero-btns">
+                    <a href="https://forms.gle/M7V8r844wNx37jgq5" target="_blank" class="btn btn-vande">Student Registration</a>
+                    <a href="Entry Form.html" class="btn btn-outline-vande">Student Portal</a>
+                </div>
 
-            <!-- Stats section moved down to fit centered aesthetic -->
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <h3>1200+</h3>
-                    <p>Students Managed</p>
-                </div>
-                <div class="hero-stat">
-                    <h3>24/7</h3>
-                    <p>Real-Time Security</p>
-                </div>
-                <div class="hero-stat">
-                    <h3>4 Roles</h3>
-                    <p>Integrated Workflows</p>
-                </div>
-                <div class="hero-stat">
-                    <h3>100%</h3>
-                    <p>Digital Governance</p>
-                </div>
-            </div>
-            
-            <!-- Dashboard preview placed cleanly beneath the hero text -->
-            <div class="hero-card-wrapper">
-                <div class="hero-card">
-                    <div class="hero-card-top">
-                        <h3>Live Movement Hub</h3>
-                        <span class="live-badge">SYSTEM ACTIVE</span>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h3>1200+</h3>
+                        <p>Students Managed</p>
                     </div>
-
-                    <div class="dashboard-preview">
-                        <div class="dashboard-row">
-                            <div class="mini-box">
-                                <strong>Digital</strong>
-                                <span>Online onboarding & profile verification</span>
-                            </div>
-                            <div class="mini-box">
-                                <strong>Controlled</strong>
-                                <span>Gate verification & code matching</span>
-                            </div>
-                        </div>
-                        <div class="dashboard-row">
-                            <div class="mini-box">
-                                <strong>Smart</strong>
-                                <span>Outpass & Home Pass approvals</span>
-                            </div>
-                            <div class="mini-box">
-                                <strong>Transparent</strong>
-                                <span>Admin ledger & automated fine tracking</span>
-                            </div>
-                        </div>
-                        <div class="mini-list">
-                            <div class="mini-item"><span>Student Registration</span><b>ACTIVE</b></div>
-                            <div class="mini-item"><span>Outpass / Home Pass</span><b>READY</b></div>
-                            <div class="mini-item"><span>Gate Verification Desk</span><b>SECURE</b></div>
-                            <div class="mini-item"><span>Admin Analytics</span><b>ENABLED</b></div>
-                        </div>
+                    <div class="hero-stat">
+                        <h3>24/7</h3>
+                        <p>Real-Time Security</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>4 Roles</h3>
+                        <p>Integrated Workflows</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>100%</h3>
+                        <p>Digital Governance</p>
                     </div>
                 </div>
             </div>
 
+            <div class="hero-card">
+                <div class="hero-card-top">
+                    <h3>Live Movement Hub</h3>
+                    <span class="live-badge">SYSTEM ACTIVE</span>
+                </div>
+
+                <div class="dashboard-preview">
+                    <div class="dashboard-row">
+                        <div class="mini-box">
+                            <strong>Digital</strong>
+                            <span>Online onboarding & profile verification</span>
+                        </div>
+                        <div class="mini-box">
+                            <strong>Controlled</strong>
+                            <span>Gate verification & code matching</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-row">
+                        <div class="mini-box">
+                            <strong>Smart</strong>
+                            <span>Outpass & Home Pass approvals</span>
+                        </div>
+                        <div class="mini-box">
+                            <strong>Transparent</strong>
+                            <span>Admin ledger & automated fine tracking</span>
+                        </div>
+                    </div>
+                    <div class="mini-list">
+                        <div class="mini-item"><span>Student Registration</span><b>ACTIVE</b></div>
+                        <div class="mini-item"><span>Outpass / Home Pass</span><b>READY</b></div>
+                        <div class="mini-item"><span>Gate Verification Desk</span><b>SECURE</b></div>
+                        <div class="mini-item"><span>Admin Analytics</span><b>ENABLED</b></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2344,7 +2293,7 @@
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-    <!-- Chatbot Floating Button -->
+    <!-- Chatbot Floating Button styled like the "Ask Agent" Pill from ref image -->
     <button class="chatbot-toggle" id="chatbotToggle" title="Open AI Assistant">💬</button>
 
     <!-- Chatbot Window -->
@@ -2409,7 +2358,7 @@
         </div>
     </div>
 
-    <!-- Script intact -->
+    <!-- Your EXACT Original JavaScript - Not a single change -->
     <script>
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzW69kg7WhFqb7BdpBrR31M3aN5xjAAuJaDY_axV19cBB31lcUvI4axYRBk2gwWezH1/exec";
 
