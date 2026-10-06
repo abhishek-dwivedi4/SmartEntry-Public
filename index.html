@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Entry Portal | Vande Bharatam Grassroots Hostel Innovation Movement</title>
+    <title>Smart Entry Portal | Institutional Access Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* Synexis-inspired Deep Space & Neon Theme Variables */
             --vande-bg: #090314;
             --vande-bg-surface: #110526;
             --vande-card: rgba(17, 5, 38, 0.4);
@@ -28,8 +26,6 @@
             --vande-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
             --vande-shadow-lg: 0 24px 60px rgba(138, 43, 226, 0.25);
             --radius: 20px;
-            
-            /* Navbar Specific Gold */
             --nav-gold: #E5A960;
         }
 
@@ -40,9 +36,7 @@
             font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background: var(--vande-bg);
@@ -51,27 +45,11 @@
             position: relative;
         }
 
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
+        img { display: block; max-width: 100%; height: auto; }
+        a { text-decoration: none; color: inherit; }
+        button, input, textarea, select { font: inherit; }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit;
-        }
-
-        /* Background Ambient Glows - Synexis Style */
-        body::before,
-        body::after {
+        body::before, body::after {
             content: "";
             position: fixed;
             border-radius: 50%;
@@ -82,19 +60,15 @@
         }
 
         body::before {
-            width: 600px;
-            height: 600px;
+            width: 600px; height: 600px;
             background: rgba(138, 43, 226, 0.3);
-            top: -150px;
-            left: -150px;
+            top: -150px; left: -150px;
         }
 
         body::after {
-            width: 700px;
-            height: 700px;
+            width: 700px; height: 700px;
             background: rgba(217, 70, 239, 0.2);
-            bottom: -200px;
-            right: -200px;
+            bottom: -200px; right: -200px;
         }
 
         .container {
@@ -104,26 +78,17 @@
             z-index: 1;
         }
 
-        .section {
-            padding: 90px 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-dark {
-            background: transparent;
-        }
-
+        .section { padding: 90px 0; position: relative; z-index: 2; }
+        .section-dark { background: transparent; }
         .section-surface {
             background: var(--vande-bg-surface);
             border-top: 1px solid var(--vande-line);
             border-bottom: 1px solid var(--vande-line);
         }
 
-        /* Topbar */
         .topbar {
-            background: #050505;
-            color: #82a5c5; /* Muted blue for the values */
+            background: #000000;
+            color: #58a6ff; 
             font-size: 14px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             position: relative;
@@ -140,8 +105,7 @@
             padding: 8px 0;
         }
 
-        .topbar-left,
-        .topbar-right {
+        .topbar-left, .topbar-right {
             display: flex;
             gap: 24px;
             flex-wrap: wrap;
@@ -149,7 +113,7 @@
         }
 
         .topbar strong {
-            color: #FFF; /* Pure white for labels */
+            color: #FFFFFF; 
             font-weight: 700;
             margin-right: 4px;
         }
@@ -160,15 +124,14 @@
             gap: 6px;
             padding: 4px 12px;
             border-radius: 999px;
-            background: rgba(229, 169, 96, 0.08);
-            border: 1px solid rgba(229, 169, 96, 0.4); /* Solid gold border */
+            background: transparent;
+            border: 1px solid var(--nav-gold); 
             color: var(--nav-gold);
             font-weight: 700;
             font-size: 12px;
             margin-right: 8px;
         }
 
-        /* Header / Navbar */
         .header {
             position: sticky;
             top: 0;
@@ -196,9 +159,7 @@
             transition: 0.3s ease;
         }
 
-        .brand:hover {
-            transform: scale(1.02);
-        }
+        .brand:hover { transform: scale(1.02); }
 
         .brand-badge {
             width: 48px;
@@ -214,11 +175,7 @@
             transition: .25s ease;
         }
 
-        .brand-badge img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .brand-badge img { width: 100%; height: 100%; object-fit: cover; }
 
         .brand-text {
             min-width: 0;
@@ -272,15 +229,9 @@
             white-space: nowrap;
         }
 
-        .nav-links a:hover {
-            color: var(--nav-gold);
-        }
+        .nav-links a:hover { color: var(--nav-gold); }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
 
         .menu-toggle {
             display: none;
@@ -295,7 +246,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -353,7 +303,6 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Redesign (Gap Reduced here) */
         .hero {
             position: relative;
             overflow: hidden;
@@ -366,7 +315,6 @@
             justify-content: center;
         }
 
-        /* Animated Background Rings */
         .hero-bg-animations {
             position: absolute;
             top: 50%;
@@ -404,7 +352,6 @@
             animation: spin 50s linear infinite;
         }
 
-        /* Floating Central Abstract Object */
         .abstract-shape {
             position: absolute;
             top: 30%;
@@ -512,7 +459,6 @@
             letter-spacing: 1px;
         }
 
-        /* Floating Hero Card Animation (Centered below text) */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
@@ -622,7 +568,6 @@
             color: var(--vande-gold);
         }
 
-        /* Section Headings */
         .section-head {
             text-align: center;
             margin-bottom: 54px;
@@ -658,12 +603,10 @@
             font-size: 15px;
         }
 
-        /* Grids */
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 
-        /* Animated Glass Cards */
         .card, .notice-panel, .policy-panel, .about-panel, .contact-card, .contact-form {
             background: var(--vande-card);
             border: 1px solid var(--vande-line);
@@ -697,9 +640,7 @@
             background: rgba(25, 10, 50, 0.6);
         }
 
-        .card:hover::before, .about-panel:hover::before, .contact-form:hover::before {
-            opacity: 1;
-        }
+        .card:hover::before, .about-panel:hover::before, .contact-form:hover::before { opacity: 1; }
 
         .card-icon {
             width: 58px;
@@ -744,7 +685,6 @@
             text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
         }
 
-        /* Notices & Policies */
         .notice-wrap {
             display: grid;
             grid-template-columns: 1fr .95fr;
@@ -752,18 +692,14 @@
             align-items: start;
         }
 
-        .notice-panel h3,
-        .policy-panel h3 {
+        .notice-panel h3, .policy-panel h3 {
             font-size: 22px;
             color: #FFF;
             margin-bottom: 18px;
             font-weight: 800;
         }
 
-        .notice-list, .policy-list {
-            display: grid;
-            gap: 14px;
-        }
+        .notice-list, .policy-list { display: grid; gap: 14px; }
 
         .notice-item {
             display: flex;
@@ -830,7 +766,6 @@
             line-height: 1.7;
         }
 
-        /* Infrastructure Gallery */
         .gallery-card {
             padding: 0;
             overflow: hidden;
@@ -850,13 +785,9 @@
             transition: .4s ease;
         }
 
-        .gallery-card:hover .gallery-media img {
-            transform: scale(1.08);
-        }
+        .gallery-card:hover .gallery-media img { transform: scale(1.08); }
 
-        .gallery-body {
-            padding: 20px;
-        }
+        .gallery-body { padding: 20px; }
 
         .gallery-body h3 {
             font-size: 18px;
@@ -871,7 +802,6 @@
             line-height: 1.7;
         }
 
-        /* About Section */
         .about-panel h3 {
             font-size: 32px;
             color: #FFF;
@@ -900,9 +830,7 @@
             transition: 0.3s ease;
         }
 
-        .about-item:hover {
-            border-color: rgba(0, 242, 254, 0.4);
-        }
+        .about-item:hover { border-color: rgba(0, 242, 254, 0.4); }
 
         .about-item h4 {
             color: var(--vande-gold);
@@ -918,10 +846,7 @@
             color: var(--vande-muted);
         }
 
-        /* Authorities */
-        .authority-card {
-            text-align: center;
-        }
+        .authority-card { text-align: center; }
 
         .avatar {
             width: 80px;
@@ -950,7 +875,6 @@
             margin-bottom: 10px;
         }
 
-        /* Safety & Verification Section */
         .safety-card {
             background: rgba(0,0,0,0.4);
             border: 1px solid var(--vande-line);
@@ -980,7 +904,6 @@
             margin: 0;
         }
 
-        /* Rules */
         .rule-box {
             background: var(--vande-card);
             border: 1px solid var(--vande-line);
@@ -1010,7 +933,6 @@
             color: var(--vande-muted);
         }
 
-        /* CTA Box */
         .cta-box {
             border-radius: 30px;
             padding: 48px;
@@ -1042,7 +964,6 @@
             gap: 14px;
         }
 
-        /* Contact Section */
         .contact-layout {
             display: grid;
             grid-template-columns: .92fr 1.08fr;
@@ -1050,10 +971,7 @@
             align-items: start;
         }
 
-        .contact-stack {
-            display: grid;
-            gap: 18px;
-        }
+        .contact-stack { display: grid; gap: 18px; }
 
         .contact-card h3 {
             font-size: 18px;
@@ -1088,9 +1006,7 @@
             gap: 18px;
         }
 
-        .field {
-            margin-bottom: 18px;
-        }
+        .field { margin-bottom: 18px; }
 
         .field label {
             display: block;
@@ -1100,8 +1016,7 @@
             margin-bottom: 8px;
         }
 
-        .field input,
-        .field textarea {
+        .field input, .field textarea {
             width: 100%;
             padding: 14px 16px;
             border-radius: 14px;
@@ -1112,8 +1027,7 @@
             transition: .25s ease;
         }
 
-        .field input:focus,
-        .field textarea:focus {
+        .field input:focus, .field textarea:focus {
             border-color: var(--vande-orange-bright);
             box-shadow: 0 0 0 3px var(--vande-orange-glow);
             background: rgba(138,43,226, 0.1);
@@ -1124,7 +1038,6 @@
             resize: vertical;
         }
 
-        /* Footer */
         .footer {
             background: rgba(9, 3, 20, 0.9);
             color: var(--vande-muted);
@@ -1148,23 +1061,14 @@
             font-weight: 800;
         }
 
-        .footer p,
-        .footer li,
-        .footer a {
+        .footer p, .footer li, .footer a {
             font-size: 13.5px;
             line-height: 1.8;
             color: var(--vande-muted);
         }
 
-        .footer ul {
-            list-style: none;
-            display: grid;
-            gap: 6px;
-        }
-
-        .footer a:hover {
-            color: var(--vande-gold);
-        }
+        .footer ul { list-style: none; display: grid; gap: 6px; }
+        .footer a:hover { color: var(--vande-gold); }
 
         .footer-bottom {
             padding-top: 20px;
@@ -1174,7 +1078,6 @@
             color: #64748B;
         }
 
-        /* SECRET STAFF MODAL */
         .staff-modal-overlay {
             position: fixed;
             inset: 0;
@@ -1190,10 +1093,7 @@
             padding: 20px;
         }
 
-        .staff-modal-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
+        .staff-modal-overlay.show { opacity: 1; visibility: visible; }
 
         .staff-modal-box {
             width: 100%;
@@ -1255,10 +1155,7 @@
             margin-bottom: 20px;
         }
 
-        .staff-modal-btns {
-            display: grid;
-            gap: 12px;
-        }
+        .staff-modal-btns { display: grid; gap: 12px; }
 
         .staff-modal-btn {
             padding: 14px;
@@ -1287,7 +1184,6 @@
             color: #FFF;
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             right: 20px;
@@ -1317,11 +1213,8 @@
             pointer-events: auto;
         }
 
-        .toast.error {
-            border-left-color: #EF4444;
-        }
+        .toast.error { border-left-color: #EF4444; }
 
-        /* CHATBOT Button */
         .chatbot-toggle {
             position: fixed;
             right: 20px;
@@ -1352,11 +1245,8 @@
             letter-spacing: 0.5px;
         }
 
-        .chatbot-toggle:hover {
-            transform: scale(1.05);
-        }
+        .chatbot-toggle:hover { transform: scale(1.05); }
 
-        /* Chatbot Window */
         .chatbot-box {
             position: fixed;
             right: 20px;
@@ -1375,13 +1265,8 @@
             flex-direction: column;
         }
 
-        .chatbot-box.show {
-            display: flex;
-        }
-
-        .chatbot-box.minimized {
-            height: 76px;
-        }
+        .chatbot-box.show { display: flex; }
+        .chatbot-box.minimized { height: 76px; }
 
         .chatbot-header {
             background: rgba(9, 3, 20, 0.9);
@@ -1414,9 +1299,7 @@
             border: 1px solid var(--vande-gold);
         }
 
-        .chatbot-title-wrap {
-            min-width: 0;
-        }
+        .chatbot-title-wrap { min-width: 0; }
 
         .chatbot-header h3 {
             margin: 0;
@@ -1528,9 +1411,7 @@
             align-items: flex-end;
         }
 
-        .chat-row.user {
-            justify-content: flex-end;
-        }
+        .chat-row.user { justify-content: flex-end; }
 
         .bubble-avatar {
             width: 30px;
@@ -1553,9 +1434,7 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
 
-        .chat-bubble-wrap {
-            max-width: 82%;
-        }
+        .chat-bubble-wrap { max-width: 82%; }
 
         .chat-msg {
             padding: 11px 13px;
@@ -1587,9 +1466,7 @@
             padding: 0 4px;
         }
 
-        .chat-row.user .msg-time {
-            text-align: right;
-        }
+        .chat-row.user .msg-time { text-align: right; }
 
         .chatbot-links {
             display: flex;
@@ -1699,7 +1576,6 @@
             font-weight: 700;
         }
 
-        /* Responsive */
         @media (max-width:1100px) {
             .notice-wrap, .contact-layout, .grid-2, .footer-grid { grid-template-columns: 1fr; }
             .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -1709,16 +1585,9 @@
         }
 
         @media (max-width:860px) {
-            .menu-toggle {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
+            .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
             .nav-links {
-                position: absolute;
-                left: 16px;
-                right: 16px;
-                top: 100%;
+                position: absolute; left: 16px; right: 16px; top: 100%;
                 background: rgba(17, 5, 38, 0.95);
                 backdrop-filter: blur(24px);
                 border: 1px solid var(--vande-card-border);
@@ -1745,25 +1614,14 @@
             .cta-box { padding: 28px 20px; }
             .hero h1 { font-size: 36px; }
             .hero-card, .contact-form, .notice-panel, .policy-panel, .about-panel { padding: 20px; }
-            .chatbot-box {
-                right: 12px;
-                bottom: 84px;
-                width: calc(100vw - 24px);
-                height: 70vh;
-            }
-            .chatbot-toggle {
-                right: 12px;
-                bottom: 12px;
-                width: auto;
-                height: 56px;
-            }
+            .chatbot-box { right: 12px; bottom: 84px; width: calc(100vw - 24px); height: 70vh; }
+            .chatbot-toggle { right: 12px; bottom: 12px; width: auto; height: 56px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Topbar -->
     <div class="topbar">
         <div class="container topbar-wrap">
             <div class="topbar-left">
@@ -1778,7 +1636,6 @@
         </div>
     </div>
 
-    <!-- Header / Navigation -->
     <header class="header">
         <div class="container nav">
             <div class="brand" id="brandLogo" title="Triple-click for Staff Access">
@@ -1800,12 +1657,11 @@
 
             <div class="nav-actions">
                 <a href="https://forms.gle/M7V8r844wNx37jgq5" target="_blank" class="btn btn-nav-register">Registration</a>
-                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section (Centered layout with animated background rings and floating shape) -->
     <section class="hero" id="home">
         <div class="hero-bg-animations">
             <div class="ring ring-1"></div>
@@ -1830,7 +1686,6 @@
                 <a href="Entry Form.html" class="btn btn-outline-vande">Student Portal</a>
             </div>
 
-            <!-- Stats section moved down to fit centered aesthetic -->
             <div class="hero-stats">
                 <div class="hero-stat">
                     <h3>1200+</h3>
@@ -1850,7 +1705,6 @@
                 </div>
             </div>
             
-            <!-- Dashboard preview placed cleanly beneath the hero text -->
             <div class="hero-card-wrapper">
                 <div class="hero-card">
                     <div class="hero-card-top">
@@ -1892,7 +1746,6 @@
         </div>
     </section>
 
-    <!-- Digital Services Section -->
     <section class="section section-dark" id="services">
         <div class="container">
             <div class="section-head">
@@ -1906,7 +1759,7 @@
 
             <div class="grid-2" style="max-width: 800px; margin: 0 auto;">
                 <div class="card">
-                    <div class="card-icon">🧾</div>
+                    <div class="card-icon"><i class="fa-solid fa-file-signature"></i></div>
                     <h3>Student Registration</h3>
                     <p>Register online with student profiles, guardian information, room allocations, photo capture, and
                         verification documents.</p>
@@ -1914,7 +1767,7 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-icon">🎓</div>
+                    <div class="card-icon"><i class="fa-solid fa-user-graduate"></i></div>
                     <h3>Student Services</h3>
                     <p>Request outpasses, home passes, check return code details, track approval status, and view
                         personal fine ledger.</p>
@@ -1924,7 +1777,6 @@
         </div>
     </section>
 
-    <!-- Safety & Verification Section -->
     <section class="section section-surface" id="safety">
         <div class="container">
             <div class="section-head">
@@ -1938,22 +1790,22 @@
 
             <div class="grid-4">
                 <div class="safety-card">
-                    <h4>📍 Geofenced Movement</h4>
+                    <h4><i class="fa-solid fa-location-crosshairs"></i> Geofenced Movement</h4>
                     <p>Student requests capture GPS coordinates to prevent false entries and verify exact location at
                         submission.</p>
                 </div>
                 <div class="safety-card">
-                    <h4>📲 Parent Alert System</h4>
+                    <h4><i class="fa-solid fa-mobile-screen-button"></i> Parent Alert System</h4>
                     <p>Home Pass submissions require verified guardian phone numbers for direct SMS and call
                         verification.</p>
                 </div>
                 <div class="safety-card">
-                    <h4>🔑 Digital Gate Code</h4>
+                    <h4><i class="fa-solid fa-key"></i> Digital Gate Code</h4>
                     <p>Re-entry requires producing a unique digital return code at the gate desk to prevent unauthorized
                         entry.</p>
                 </div>
                 <div class="safety-card">
-                    <h4>⚖️ Automated Discipline</h4>
+                    <h4><i class="fa-solid fa-scale-balanced"></i> Automated Discipline</h4>
                     <p>Late arrivals beyond permitted hours are logged automatically in the fine ledger for warden
                         review.</p>
                 </div>
@@ -1961,7 +1813,6 @@
         </div>
     </section>
 
-    <!-- Why Choose Us -->
     <section class="section section-dark" id="why-us">
         <div class="container">
             <div class="section-head">
@@ -1975,35 +1826,35 @@
 
             <div class="grid-3">
                 <div class="card">
-                    <div class="card-icon">🔐</div>
+                    <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3>Grassroots Security</h3>
                     <p>Approval-based movement logs and return verification keep every student accountable and
                         protected.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">⚙️</div>
+                    <div class="card-icon"><i class="fa-solid fa-server"></i></div>
                     <h3>Centralized Command</h3>
                     <p>Students, wardens, gate security, and admins operate within one connected cloud ecosystem.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">📌</div>
+                    <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
                     <h3>Transparent Workflows</h3>
                     <p>Every pass request, timestamp, verification step, and fine transaction is permanently logged.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">📈</div>
+                    <div class="card-icon"><i class="fa-solid fa-chart-pie"></i></div>
                     <h3>Real-Time Analytics</h3>
                     <p>Interactive trends, movement charts, and live outside counts provide instant operational clarity.
                     </p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">💬</div>
+                    <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
                     <h3>Digital Student Support</h3>
                     <p>Integrated AI Assistant answers questions instantly regarding outpass, home pass, and hostel
                         guidelines.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">🏛</div>
+                    <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
                     <h3>Institutional Prestige</h3>
                     <p>Designed to present an official, sleek organizational presence matching modern top-tier
                         institutions.</p>
@@ -2012,7 +1863,6 @@
         </div>
     </section>
 
-    <!-- Campus Infrastructure -->
     <section class="section section-surface" id="infrastructure">
         <div class="container">
             <div class="section-head">
@@ -2056,7 +1906,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="section section-dark" id="about">
         <div class="container grid-2">
             <div class="about-panel">
@@ -2096,7 +1945,6 @@
         </div>
     </section>
 
-    <!-- Notice Board & Policies -->
     <section class="section section-surface" id="notices">
         <div class="container">
             <div class="section-head">
@@ -2138,22 +1986,17 @@
                 <div class="policy-panel">
                     <h3>Important Hostel Guidelines</h3>
                     <div class="policy-list">
-                        <div class="policy-item">✓ Outpass requests must be submitted digitally prior to departure.
-                        </div>
-                        <div class="policy-item">✓ Re-entry at gate must be confirmed via return code matching.</div>
-                        <div class="policy-item">✓ Late returns beyond permitted hours incur automated fine entries.
-                        </div>
-                        <div class="policy-item">✓ Keep room number, guardian phone, and contact profile up to date.
-                        </div>
-                        <div class="policy-item">✓ Unauthorized exit without approval leads to administrative review.
-                        </div>
+                        <div class="policy-item"><i class="fa-solid fa-check" style="color: var(--vande-gold);"></i> Outpass requests must be submitted digitally prior to departure.</div>
+                        <div class="policy-item"><i class="fa-solid fa-check" style="color: var(--vande-gold);"></i> Re-entry at gate must be confirmed via return code matching.</div>
+                        <div class="policy-item"><i class="fa-solid fa-check" style="color: var(--vande-gold);"></i> Late returns beyond permitted hours incur automated fine entries.</div>
+                        <div class="policy-item"><i class="fa-solid fa-check" style="color: var(--vande-gold);"></i> Keep room number, guardian phone, and contact profile up to date.</div>
+                        <div class="policy-item"><i class="fa-solid fa-check" style="color: var(--vande-gold);"></i> Unauthorized exit without approval leads to administrative review.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Authorities -->
     <section class="section section-surface" id="authorities">
         <div class="container">
             <div class="section-head">
@@ -2193,7 +2036,6 @@
         </div>
     </section>
 
-    <!-- Rules -->
     <section class="section section-dark" id="rules">
         <div class="container">
             <div class="section-head">
@@ -2222,7 +2064,6 @@
         </div>
     </section>
 
-    <!-- CTA Box -->
     <section class="section section-surface">
         <div class="container">
             <div class="cta-box">
@@ -2238,7 +2079,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="section section-dark" id="contact">
         <div class="container">
             <div class="section-head">
@@ -2253,17 +2093,17 @@
             <div class="contact-layout">
                 <div class="contact-stack">
                     <div class="contact-card">
-                        <div class="card-icon">📍</div>
+                        <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <h3>Office Location</h3>
                         <p>NBH A & B Block Boys Hostel<br>BBD University<br>Lucknow, Uttar Pradesh, India</p>
                     </div>
                     <div class="contact-card">
-                        <div class="card-icon">📞</div>
+                        <div class="card-icon"><i class="fa-solid fa-phone"></i></div>
                         <h3>Phone Helpline</h3>
                         <p>Hostel Office: +91 8858826519<br>Warden Support: +91 8858826519</p>
                     </div>
                     <div class="contact-card">
-                        <div class="card-icon">✉️</div>
+                        <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
                         <h3>Email Support</h3>
                         <p>abhidwi8858826519@gmail.com<br>support@smartentry.com</p>
                     </div>
@@ -2307,7 +2147,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -2354,11 +2193,10 @@
         </div>
     </footer>
 
-    <!-- SECRET STAFF MODAL (IDEA 3) -->
     <div class="staff-modal-overlay" id="staffAccessModal">
         <div class="staff-modal-box">
-            <button class="staff-modal-close" onclick="closeStaffModal()">✕</button>
-            <div class="staff-modal-icon">🔐</div>
+            <button class="staff-modal-close" onclick="closeStaffModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="staff-modal-icon"><i class="fa-solid fa-user-shield"></i></div>
             <h3>Authorized Staff Access</h3>
             <p>Select staff portal module to proceed to secure login.</p>
 
@@ -2371,25 +2209,22 @@
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-    <!-- Chatbot Floating Button -->
-    <button class="chatbot-toggle" id="chatbotToggle" title="Open AI Assistant">💬</button>
+    <button class="chatbot-toggle" id="chatbotToggle" title="Open AI Assistant"><i class="fa-solid fa-comment-dots"></i></button>
 
-    <!-- Chatbot Window -->
     <div class="chatbot-box" id="chatbotBox">
         <div class="chatbot-header">
             <div class="chatbot-head-left">
-                <div class="chatbot-avatar">🤖</div>
+                <div class="chatbot-avatar"><i class="fa-solid fa-robot"></i></div>
                 <div class="chatbot-title-wrap">
                     <h3>Smart Entry Assistant</h3>
                     <p>Vande Bharatam Digital Helper</p>
                 </div>
             </div>
             <div class="chatbot-head-actions">
-                <button class="chatbot-head-btn" id="chatbotMinimize" title="Minimize">–</button>
-                <button class="chatbot-head-btn" id="chatbotClose" title="Close">✕</button>
+                <button class="chatbot-head-btn" id="chatbotMinimize" title="Minimize"><i class="fa-solid fa-minus"></i></button>
+                <button class="chatbot-head-btn" id="chatbotClose" title="Close"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
 
@@ -2403,19 +2238,19 @@
             </div>
 
             <div class="quick-grid">
-                <button class="quick-card" onclick="sendSuggestion('How to apply outpass?')">
+                <button class="quick-card" onclick="sendSuggestion('How to apply for an outpass?')">
                     <strong>Apply Outpass</strong>
                     <span>Digital outpass guidance</span>
                 </button>
-                <button class="quick-card" onclick="sendSuggestion('How to apply home pass?')">
+                <button class="quick-card" onclick="sendSuggestion('How to apply for a home pass?')">
                     <strong>Home Pass</strong>
                     <span>Leave request process</span>
                 </button>
-                <button class="quick-card" onclick="sendSuggestion('Fine rules explain')">
+                <button class="quick-card" onclick="sendSuggestion('Explain fine rules')">
                     <strong>Fine Rules</strong>
                     <span>Understand late penalties</span>
                 </button>
-                <button class="quick-card" onclick="sendSuggestion('Gate verification kya hai?')">
+                <button class="quick-card" onclick="sendSuggestion('What is Gate Verification?')">
                     <strong>Gate Desk</strong>
                     <span>Return code verification</span>
                 </button>
@@ -2424,12 +2259,11 @@
 
         <div class="chatbot-footer" id="chatbotFooter">
             <div class="chatbot-suggestions">
-                <button class="suggestion-btn" onclick="sendSuggestion('How to apply outpass?')">Outpass</button>
-                <button class="suggestion-btn" onclick="sendSuggestion('How to apply home pass?')">Home Pass</button>
-                <button class="suggestion-btn" onclick="sendSuggestion('Fine rules explain')">Fine</button>
-                <button class="suggestion-btn" onclick="sendSuggestion('Gate verification kya hai?')">Gate</button>
-                <button class="suggestion-btn"
-                    onclick="sendSuggestion('Student registration link do')">Registration</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('How to apply for an outpass?')">Outpass</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('How to apply for a home pass?')">Home Pass</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('Explain fine rules')">Fine</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('What is Gate Verification?')">Gate</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('Provide registration link')">Registration</button>
             </div>
 
             <div class="chatbot-input-wrap">
@@ -2439,29 +2273,26 @@
         </div>
     </div>
 
-    <!-- Script intact -->
     <script>
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzW69kg7WhFqb7BdpBrR31M3aN5xjAAuJaDY_axV19cBB31lcUvI4axYRBk2gwWezH1/exec";
 
-        // Navigation Menu
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
         if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('show');
-                menuToggle.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+                menuToggle.innerHTML = navLinks.classList.contains('show') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
             });
         }
 
         document.querySelectorAll('#navLinks a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('show');
-                if (menuToggle) menuToggle.textContent = '☰';
+                if (menuToggle) menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
             });
         });
 
-        // SECRET STAFF ACCESS MODAL (IDEA 3)
         let logoClickCount = 0;
         let logoClickTimer = null;
         const brandLogo = document.getElementById('brandLogo');
@@ -2480,7 +2311,6 @@
             });
         }
 
-        // Keyboard Shortcut (Ctrl + Shift + S)
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.shiftKey && (e.key === 'S' || e.key === 's' || e.key === 'A' || e.key === 'a')) {
                 e.preventDefault();
@@ -2512,66 +2342,83 @@
             }, 3000);
         }
 
-        async function submitContactForm() {
+        function submitContactForm() {
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saved!'; 
+
             const fullName = document.getElementById('contactFullName').value.trim();
             const email = document.getElementById('contactEmail').value.trim();
             const phone = document.getElementById('contactPhone').value.trim();
             const subject = document.getElementById('contactSubject').value.trim();
             const message = document.getElementById('contactMessage').value.trim();
-            const submitBtn = document.getElementById('submitBtn');
 
             if (!fullName || !email || !phone || !subject || !message) {
                 showToast('Please fill all fields.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
                 return;
             }
 
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
                 showToast('Please enter a valid email address.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
                 return;
             }
 
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            const entryData = { 
+                fullName, email, phone, subject, message, 
+                timestamp: new Date().toLocaleString() 
+            };
+            
+            let pendingEntries = JSON.parse(localStorage.getItem('pendingEntries') || '[]');
+            pendingEntries.push(entryData);
+            localStorage.setItem('pendingEntries', JSON.stringify(pendingEntries));
+
+            showToast("Message saved! Syncing in background.", "success");
+            
+            document.getElementById('contactFullName').value = '';
+            document.getElementById('contactEmail').value = '';
+            document.getElementById('contactPhone').value = '';
+            document.getElementById('contactSubject').value = '';
+            document.getElementById('contactMessage').value = '';
+            
+            setTimeout(() => { 
+                submitBtn.disabled = false; 
+                submitBtn.textContent = originalText; 
+            }, 1000);
+
+            syncWithGoogleSheets();
+        }
+
+        async function syncWithGoogleSheets() {
+            let pendingEntries = JSON.parse(localStorage.getItem('pendingEntries') || '[]');
+            if (pendingEntries.length === 0) return; 
 
             try {
                 const response = await fetch(WEB_APP_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify({
-                        action: 'submitContactForm',
-                        fullName, email, phone, subject, message
-                    }),
+                    body: JSON.stringify({ action: 'bulkInsert', data: pendingEntries }),
                     redirect: 'follow'
                 });
-
-                const raw = await response.text();
-                let data;
-                try { data = JSON.parse(raw); } catch (err) {
-                    showToast('Response parsing error.', 'error');
-                    return;
-                }
-
+                const data = await response.json();
+                
                 if (data.ok) {
-                    showToast(data.message || 'Message submitted successfully.');
-                    document.getElementById('contactFullName').value = '';
-                    document.getElementById('contactEmail').value = '';
-                    document.getElementById('contactPhone').value = '';
-                    document.getElementById('contactSubject').value = '';
-                    document.getElementById('contactMessage').value = '';
-                } else {
-                    showToast(data.message || 'Submission failed.', 'error');
+                    localStorage.removeItem('pendingEntries');
                 }
             } catch (error) {
-                showToast('Network error. Check connection.', 'error');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                console.error("Background sync retry scheduled.");
             }
         }
 
-        // Chatbot Logic
+        setInterval(syncWithGoogleSheets, 30000);
+        window.addEventListener('load', syncWithGoogleSheets);
+
+
         const chatbotToggle = document.getElementById("chatbotToggle");
         const chatbotBox = document.getElementById("chatbotBox");
         const chatbotClose = document.getElementById("chatbotClose");
@@ -2605,7 +2452,7 @@
 
             const avatar = document.createElement("div");
             avatar.className = "bubble-avatar";
-            avatar.textContent = type === "user" ? "👤" : "🤖";
+            avatar.innerHTML = type === "user" ? '<i class="fa-solid fa-user"></i>' : '<i class="fa-solid fa-robot"></i>';
 
             const wrap = document.createElement("div");
             wrap.className = "chat-bubble-wrap";
@@ -2646,7 +2493,7 @@
 
             const avatar = document.createElement("div");
             avatar.className = "bubble-avatar";
-            avatar.textContent = "🤖";
+            avatar.innerHTML = '<i class="fa-solid fa-robot"></i>';
 
             const wrap = document.createElement("div");
             wrap.innerHTML = `<div class="typing-box"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>`;
@@ -2718,7 +2565,7 @@
                 };
             }
             return {
-                text: `**How can I help you?**\n\nTry asking:\n- Outpass apply kaise kare\n- Home pass requirements\n- Gate return code verify\n- Fine clear details`
+                text: `**How can I help you?**\n\nTry asking:\n- How to apply for an outpass\n- Home pass requirements\n- How to verify gate return code\n- Fine clearance details`
             };
         }
     </script>
