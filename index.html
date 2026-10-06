@@ -1,6 +1,5 @@
  <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -112,12 +111,6 @@
             align-items: center;
         }
 
-        .topbar strong {
-            color: #FFFFFF; 
-            font-weight: 700;
-            margin-right: 4px;
-        }
-
         .topbar-flag {
             display: inline-flex;
             align-items: center;
@@ -130,6 +123,32 @@
             font-weight: 700;
             font-size: 12px;
             margin-right: 8px;
+        }
+
+        .topbar-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #58a6ff;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .topbar-item strong {
+            color: #FFFFFF; 
+            font-weight: 700;
+        }
+
+        .topbar-icon {
+            color: var(--nav-gold);
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-only {
+            display: none;
         }
 
         .header {
@@ -1604,6 +1623,37 @@
             .section-head h2 { font-size: 32px; }
             .hero h1 { font-size: 42px; }
             .form-row, .about-highlights, .dashboard-row { grid-template-columns: 1fr; }
+
+            .mobile-only { display: inline-flex !important; }
+            .topbar-text { display: none !important; }
+            .topbar-right { display: none !important; }
+            .topbar-flag { display: none !important; }
+            
+            .topbar-wrap {
+                justify-content: center !important;
+                padding: 12px 0 !important;
+            }
+            
+            .topbar-left {
+                width: 100%;
+                justify-content: center !important;
+                gap: 20px !important;
+            }
+            
+            .topbar-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                border: 1px solid rgba(229, 169, 96, 0.4);
+                background: rgba(229, 169, 96, 0.08);
+                font-size: 18px;
+                transition: 0.3s ease;
+            }
+            
+            .topbar-item:hover .topbar-icon {
+                background: var(--nav-gold);
+                color: #000;
+            }
         }
 
         @media (max-width:640px) {
@@ -1626,12 +1676,28 @@
         <div class="container topbar-wrap">
             <div class="topbar-left">
                 <span class="topbar-flag">HOSTEL PORTAL</span>
-                <span><strong>Official Helpdesk:</strong> +91 8858826519</span>
-                <span><strong>Email:</strong> abhidwi8858826519@gmail.com</span>
+                <a href="tel:+918858826519" class="topbar-item">
+                    <span class="topbar-icon mobile-only"><i class="fa-solid fa-phone"></i></span>
+                    <span class="topbar-text"><strong>Official Helpdesk:</strong> +91 8858826519</span>
+                </a>
+                <a href="mailto:abhidwi8858826519@gmail.com" class="topbar-item">
+                    <span class="topbar-icon mobile-only"><i class="fa-solid fa-envelope"></i></span>
+                    <span class="topbar-text"><strong>Email:</strong> abhidwi8858826519@gmail.com</span>
+                </a>
+                <a href="#" class="topbar-item mobile-only">
+                    <span class="topbar-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                </a>
+                <a href="https://wa.me/918858826519" class="topbar-item mobile-only">
+                    <span class="topbar-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                </a>
             </div>
             <div class="topbar-right">
-                <span><strong>Portal Hours:</strong> 24/7 Digital Access</span>
-                <span><strong>Location:</strong> BBD University, Lucknow</span>
+                <div class="topbar-item">
+                    <span class="topbar-text"><strong>Portal Hours:</strong> 24/7 Digital Access</span>
+                </div>
+                <div class="topbar-item">
+                    <span class="topbar-text"><strong>Location:</strong> BBD University, Lucknow</span>
+                </div>
             </div>
         </div>
     </div>
@@ -2418,7 +2484,6 @@
         setInterval(syncWithGoogleSheets, 30000);
         window.addEventListener('load', syncWithGoogleSheets);
 
-
         const chatbotToggle = document.getElementById("chatbotToggle");
         const chatbotBox = document.getElementById("chatbotBox");
         const chatbotClose = document.getElementById("chatbotClose");
@@ -2570,5 +2635,4 @@
         }
     </script>
 </body>
-
 </html>
